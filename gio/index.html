@@ -561,12 +561,13 @@
     </div>
 
     <script>
-        // Check if claims are open (June 25th or later)
-        const CLAIMS_OPEN_DATE = new Date(2026, 5, 25); // June 25, 2026 (month is 0-indexed)
+        // Claims open June 25, 2026 and close after that day (month is 0-indexed)
+        const CLAIMS_OPEN_DATE  = new Date(2026, 5, 25); // June 25, 2026
+        const CLAIMS_CLOSE_DATE = new Date(2026, 5, 26); // June 26, 2026
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
-        const isClaimsOpen = today >= CLAIMS_OPEN_DATE;
+        const isClaimsOpen = today >= CLAIMS_OPEN_DATE && today < CLAIMS_CLOSE_DATE;
 
         // Show/hide appropriate content based on date
         if (isClaimsOpen) {
