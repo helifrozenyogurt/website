@@ -531,7 +531,7 @@
             <h2>You're on the list</h2>
             <p>Your free Heli cup has been reserved.</p>
             <p style="font-size: 14px; margin-top: 20px; line-height: 1.6;">
-                We'll send your coupon code on Residents' Day, June 25th. Once you receive it, enter the code at the Heli machine to enjoy your free cup.
+                Check your email — your coupon code is on its way. Enter it at the Heli machine to enjoy your free Greek frozen yogurt.
             </p>
             <p style="font-size: 14px; margin-top: 15px;">
                 See you soon by the machine.
@@ -560,6 +560,10 @@
     <script>
         // TEST PAGE — date gate disabled, form always open
         const isClaimsOpen = true;
+
+        // Apps Script URL for immediate email sending.
+        // After deploying heli-email-sender.gs as a Web App, paste the URL here.
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxxDg0S5l9h8YN3bs0buT8rsFo3kTCFvhYq_2dQWusZjNDaewIwLizdWkA0JTnyMcUOdQ/exec';
 
         // Show/hide appropriate content based on date
         if (isClaimsOpen) {
@@ -617,28 +621,37 @@
             event.preventDefault();
 
             const formData = new FormData(document.getElementById('claimForm'));
-            const data = {
-                'entry.876818892': formData.get('name'),
-                'entry.1240160696': formData.get('apartment'),
-                'entry.2127206558': formData.get('email'),
-                'entry.385193803': formData.get('phone') || '',
-                'entry.2032772615': formData.get('consent') ? 'Yes' : 'No'
-            };
+            const name      = formData.get('name');
+            const email     = formData.get('email');
+            const apartment = formData.get('apartment');
+            const phone     = formData.get('phone') || '';
+            const consent   = formData.get('consent') ? 'Yes' : 'No';
 
-            // Send to Google Sheets via fetch
+            // 1. Save to Google Sheets via Google Forms
             fetch(CLAIM_FORM_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams(data)
-            }).then(() => {
-                showThankYouPopup('thankYouPopup', 'claimModal');
-            }).catch(error => {
-                console.log('Data submitted (cors mode):', data);
-                showThankYouPopup('thankYouPopup', 'claimModal');
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    'entry.876818892': name,
+                    'entry.1240160696': apartment,
+                    'entry.2127206558': email,
+                    'entry.385193803': phone,
+                    'entry.2032772615': consent
+                })
             });
+
+            // 2. Send immediate confirmation email via Apps Script (TEST PAGE only)
+            if (APPS_SCRIPT_URL !== 'YOUR_APPS_SCRIPT_URL_HERE') {
+                fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({ name, email, apartment, phone })
+                }).catch(err => console.warn('Email script error:', err));
+            }
+
+            // 3. Show thank-you popup immediately
+            showThankYouPopup('thankYouPopup', 'claimModal');
         }
 
         function handleFeedbackSubmit(event) {
