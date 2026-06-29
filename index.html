@@ -94,7 +94,7 @@
     }
 
     .brand-logo {
-      width: 86px;
+      width: 130px;
       height: auto;
     }
 
@@ -316,6 +316,24 @@
       font-weight: 700;
       letter-spacing: .22em;
       text-transform: uppercase;
+    }
+
+    .machine-photo-wrap {
+      position: absolute;
+      inset: 94px 0 30px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+    }
+
+    .machine-photo {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 30px 60px rgba(23, 56, 103, 0.20));
+      border-radius: 18px;
     }
 
     .machine-scene {
@@ -1100,18 +1118,8 @@
             <img src="assets/heli-logo.png" alt="Heli" />
             <span>Greek · Frozen · Yogurt</span>
           </div>
-          <div class="machine-scene">
-            <div class="machine" aria-hidden="true">
-              <div class="machine-top"><img src="assets/heli-logo.png" alt="" /></div>
-              <div class="machine-window"></div>
-              <div class="pay-panel"></div>
-              <div class="machine-base"></div>
-            </div>
-            <div class="cup" aria-hidden="true">
-              <div class="swirl"></div>
-              <div class="bowl"></div>
-              <div class="label">h</div>
-            </div>
+          <div class="machine-photo-wrap">
+            <img src="assets/heli-machine.jpg" alt="Heli frozen yogurt vending machine" class="machine-photo" />
           </div>
           <div class="floating-note note-one">Guest-ready</div>
           <div class="floating-note note-two">Small footprint</div>
