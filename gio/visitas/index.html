@@ -131,6 +131,15 @@ textarea { resize: vertical; min-height: 88px; line-height: 1.5; }
 /* Mix sub-fields */
 .mix-fields { display: flex; flex-direction: column; gap: 14px; }
 
+/* Inventory */
+.inventory-section { display: flex; flex-direction: column; gap: 20px; }
+.ingredient-list { display: flex; flex-direction: column; gap: 6px; }
+.ingredient-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; background: rgba(255,255,255,.8); border: 1px solid rgba(23,56,103,.1); border-radius: 10px; }
+.ingredient-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+.ingredient-input { width: 100px; padding: 7px 10px; border: 1.5px solid rgba(23,56,103,.18); border-radius: 8px; background: white; font-family: "Montserrat", sans-serif; font-size: 13px; color: var(--ink); outline: none; text-align: center; transition: border-color .2s, box-shadow .2s; }
+.ingredient-input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(23,56,103,.1); }
+.tile-icon-text { font-size: 15px; font-weight: 800; color: var(--navy); letter-spacing: -.02em; }
+
 /* Errors */
 .err { display: none; align-items: center; gap: 8px; margin-top: 10px; padding: 10px 14px; background: rgba(184,112,131,.1); border: 1px solid rgba(184,112,131,.25); border-radius: 10px; font-size: 12px; font-weight: 600; color: var(--berry-dark); }
 .err.show { display: flex; }
@@ -318,6 +327,41 @@ footer { padding: 28px 0 20px; }
               </div>
             </div>
 
+            <!-- Inventario -->
+            <div class="activity-tile" id="tile-inventario" onclick="toggleTile('inventario')">
+              <div class="tile-header">
+                <div class="tile-icon"><span class="tile-icon-text">inv</span></div>
+                <div class="tile-text">
+                  <div class="tile-name">Inventario</div>
+                  <div class="tile-desc">Stock de ingredientes y notas de limpieza</div>
+                </div>
+                <div class="tile-check"></div>
+              </div>
+              <div class="tile-body" id="body-inventario">
+                <div class="inventory-section">
+                  <div>
+                    <span class="sub-label">Limpieza / Mantenimiento</span>
+                    <textarea id="txt-limpieza" placeholder="Ej: pocas bolsas de basura, buena cantidad de limpiador, trapo en mal estado..." onclick="event.stopPropagation()"></textarea>
+                  </div>
+                  <div>
+                    <span class="sub-label">Ingredientes — cantidad restante</span>
+                    <div class="ingredient-list">
+                      <div class="ingredient-row"><span class="ingredient-name">Granola</span><input type="text" class="ingredient-input" id="ing-granola" placeholder="—" onclick="event.stopPropagation()"></div>
+                      <div class="ingredient-row"><span class="ingredient-name">Pistachio</span><input type="text" class="ingredient-input" id="ing-pistachio" placeholder="—" onclick="event.stopPropagation()"></div>
+                      <div class="ingredient-row"><span class="ingredient-name">Choco chips</span><input type="text" class="ingredient-input" id="ing-choco-chips" placeholder="—" onclick="event.stopPropagation()"></div>
+                      <div class="ingredient-row"><span class="ingredient-name">Choco salsa</span><input type="text" class="ingredient-input" id="ing-choco-salsa" placeholder="—" onclick="event.stopPropagation()"></div>
+                      <div class="ingredient-row"><span class="ingredient-name">Pistachio salsa</span><input type="text" class="ingredient-input" id="ing-pistachio-salsa" placeholder="—" onclick="event.stopPropagation()"></div>
+                      <div class="ingredient-row"><span class="ingredient-name">Miel</span><input type="text" class="ingredient-input" id="ing-miel" placeholder="—" onclick="event.stopPropagation()"></div>
+                      <div class="ingredient-row"><span class="ingredient-name">Mix yogurt</span><input type="text" class="ingredient-input" id="ing-mix" placeholder="—" onclick="event.stopPropagation()"></div>
+                      <div style="height:1px;background:rgba(23,56,103,.1);margin:4px 0"></div>
+                      <div class="ingredient-row"><span class="ingredient-name">Cucharas</span><input type="text" class="ingredient-input" id="ing-cucharas" placeholder="—" onclick="event.stopPropagation()"></div>
+                      <div class="ingredient-row"><span class="ingredient-name">Vasos</span><input type="text" class="ingredient-input" id="ing-vasos" placeholder="—" onclick="event.stopPropagation()"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
           <div class="err" id="err-actividades">⚠ Selecciona al menos una actividad.</div>
         </div>
@@ -396,7 +440,8 @@ function removePhoto() {
   document.getElementById('foto-label-text').textContent = 'Adjuntar foto';
 }
 
-const tileSelected = { topping: false, mix: false, problema: false };
+const tileSelected = { topping: false, mix: false, problema: false, inventario: false };
+const ING_KEYS = ['granola','pistachio','choco-chips','choco-salsa','pistachio-salsa','miel','mix','cucharas','vasos'];
 const TOPPING_LABELS = {
   'granola': 'Granola', 'pistachio': 'Pistachio', 'choco-chips': 'Choco chips',
   'choco-salsa': 'Choco salsa', 'pistachio-salsa': 'Pistachio salsa', 'miel': 'Miel', 'otro': 'Otro'
@@ -418,6 +463,10 @@ function toggleTile(key) {
     if (key === 'topping') clearToppings();
     if (key === 'mix') { document.getElementById('sel-mix-bolsas').value = ''; mixNivel = null; renderMixScale(); }
     if (key === 'problema') document.getElementById('txt-problema').value = '';
+    if (key === 'inventario') {
+      document.getElementById('txt-limpieza').value = '';
+      ING_KEYS.forEach(k => { document.getElementById('ing-' + k).value = ''; });
+    }
   }
   clearErrors();
 }
@@ -503,7 +552,7 @@ document.getElementById('visitForm').addEventListener('submit', async function(e
 
   let ok = true;
   if (!fecha) { showErr('err-fecha'); ok = false; }
-  if (!tileSelected.topping && !tileSelected.mix && !tileSelected.problema) { showErr('err-actividades'); ok = false; }
+  if (!tileSelected.topping && !tileSelected.mix && !tileSelected.problema && !tileSelected.inventario) { showErr('err-actividades'); ok = false; }
   if (tileSelected.topping && (selectedToppings.size === 0 || ![...selectedToppings].every(k => toppingLevels[k]))) { showErr('err-topping'); ok = false; }
   if (tileSelected.mix && (!bolsas || !mixNivel)) { showErr('err-mix'); ok = false; }
   if (tileSelected.problema && !txtProblema) { showErr('err-problema'); ok = false; }
@@ -526,6 +575,18 @@ document.getElementById('visitForm').addEventListener('submit', async function(e
   };
   if (fotoBase64) payload.foto = fotoBase64;
 
+  if (tileSelected.inventario) {
+    const ingredientes = {};
+    ING_KEYS.forEach(k => {
+      const v = document.getElementById('ing-' + k).value.trim();
+      if (v) ingredientes[k] = v;
+    });
+    payload.inventario = {
+      limpieza: document.getElementById('txt-limpieza').value.trim(),
+      ingredientes
+    };
+  }
+
   const btn = document.getElementById('submitBtn');
   btn.disabled = true; btn.classList.add('loading');
 
@@ -539,6 +600,7 @@ document.getElementById('visitForm').addEventListener('submit', async function(e
   if (tileSelected.topping) toppingsData.forEach(t => lines.push(t.nombre + ' — nivel ' + t.nivel + '/10'));
   if (tileSelected.mix) lines.push('Mix · ' + bolsas + ' bolsa' + (bolsas > 1 ? 's' : '') + ' · nivel ' + mixNivel + '/10');
   if (tileSelected.problema) lines.push('Problema resuelto');
+  if (tileSelected.inventario) lines.push('Inventario registrado');
   if (fotoBase64) lines.push('Foto adjunta');
 
   document.getElementById('successSummary').innerHTML =
@@ -553,7 +615,7 @@ document.getElementById('visitForm').addEventListener('submit', async function(e
 // ── Reset ──────────────────────────────────────────────────────────────────
 function resetForm() {
   document.getElementById('successOverlay').classList.remove('show');
-  ['topping','mix','problema'].forEach(k => { if (tileSelected[k]) toggleTile(k); });
+  ['topping','mix','problema','inventario'].forEach(k => { if (tileSelected[k]) toggleTile(k); });
   document.getElementById('fecha').value = new Date().toISOString().split('T')[0];
   removePhoto();
   clearErrors();
@@ -574,6 +636,7 @@ function renderHistory() {
     if (v.rellenarTopping && v.toppings) v.toppings.forEach(t => chips.push('<span class="chip">' + t.nombre + ' <strong>' + t.nivel + '/10</strong></span>'));
     if (v.rellenarMix) chips.push('<span class="chip">Mix · ' + (v.mixBolsas || '?') + ' bolsa' + (v.mixBolsas > 1 ? 's' : '') + ' · ' + (v.mixNivel || '?') + '/10</span>');
     if (v.arreglarProblema) { chips.push('<span class="chip red">Problema</span>'); if (v.descripcionProblema) notes.push('<div class="visit-note">' + v.descripcionProblema + '</div>'); }
+    if (v.inventario) chips.push('<span class="chip">Inventario</span>');
     return '<div class="visit-item"><div class="visit-top"><span class="visit-date">' + formatFecha(v.fecha) + '</span>' + (i===0?'<span class="visit-new-tag">Más reciente</span>':'') + '</div><div class="visit-chips">' + chips.join('') + '</div>' + notes.join('') + '</div>';
   }).join('');
 }
