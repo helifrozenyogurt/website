@@ -119,10 +119,10 @@
       align-items: center;
       gap: 22px;
       font-size: 12px;
-      letter-spacing: .08em;
+      letter-spacing: .04em;
       text-transform: uppercase;
       color: var(--navy-deep);
-      font-weight: 600;
+      font-weight: 500;
     }
 
     .nav-links a {
@@ -175,8 +175,22 @@
 
     .button-secondary {
       color: var(--navy);
-      background: rgba(255,255,255,.72);
-      border-color: rgba(23, 56, 103, .16);
+      background: none;
+      border-color: transparent;
+      box-shadow: none;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 13px 8px;
+      text-decoration: underline;
+      text-decoration-color: rgba(23, 56, 103, .3);
+      text-underline-offset: 3px;
+    }
+
+    .button-secondary:hover {
+      transform: none;
+      text-decoration-color: var(--navy);
     }
 
     .button-berry {
@@ -256,12 +270,12 @@
     }
 
     .hero-microcopy {
-      margin: 16px 0 0;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--berry-dark);
+      margin: 14px 0 0;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--muted);
     }
 
     .hero-proof {
@@ -558,12 +572,12 @@
       background: rgba(255,255,255,.82);
       border: 1px solid rgba(23,56,103,.1);
       box-shadow: 0 18px 42px rgba(23,56,103,.11);
-      color: var(--navy);
+      color: var(--navy-deep);
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      padding: 14px 16px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+      padding: 11px 15px;
     }
 
     .note-one {
@@ -1208,6 +1222,16 @@
       line-height: 1.6;
     }
 
+    .pour-video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      max-height: 440px;
+      object-fit: cover;
+      background: #0f284d;
+    }
+
     .media-placeholder strong {
       display: block;
       font-family: "Cormorant Garamond", Georgia, serif;
@@ -1470,7 +1494,7 @@
             <a class="button button-berry" href="#contact-form">Bring Heli to Your Property</a>
             <a class="button button-secondary" href="#how">See How It Works</a>
           </div>
-          <p class="hero-microcopy">Free site review · No cost to install · Live in 2–4 weeks</p>
+          <p class="hero-microcopy">Free site review · No cost to install · Live in 4 weeks</p>
           <div class="hero-proof" aria-label="Heli highlights">
             <span class="proof-chip">Cashless experience</span>
             <span class="proof-chip">Custom branding options</span>
@@ -1509,31 +1533,39 @@
         <div class="section-heading">
           <div>
             <p class="section-kicker">See it in action</p>
-            <h2>Tap to pay. Pick a size. Enjoy.</h2>
+            <h2>Start an order. Pick your toppings. Enjoy.</h2>
           </div>
-          <p class="section-intro">Tap to pay, pick a size, and Heli dispenses a fresh 5 oz cup of premium Greek frozen yogurt — no app, no cash, no line.</p>
+          <p class="section-intro">Start a new order at the machine, select the toppings you'd like, then tap to pay and enjoy a fresh 5 oz cup of premium Greek frozen yogurt — no app, no cash, no line.</p>
         </div>
 
         <div class="icon-steps" data-reveal>
           <div class="icon-step">
             <div class="icon-circle">1</div>
-            <span>Tap to pay</span>
+            <span>Start order</span>
           </div>
           <div class="icon-step">
             <div class="icon-circle">2</div>
-            <span>Select size</span>
+            <span>Select toppings</span>
           </div>
           <div class="icon-step">
             <div class="icon-circle">3</div>
-            <span>Enjoy</span>
+            <span>Pay &amp; enjoy</span>
           </div>
         </div>
 
         <div class="visual-grid">
-          <div class="visual-card" data-reveal>
-            <div class="media-placeholder">
-              <div><strong>Pour video / GIF</strong>Cup in, yogurt dispenses, done — a 10&ndash;15 second loop. Highest-priority visual asset; pending footage.</div>
-            </div>
+          <div class="visual-card" data-reveal style="padding: 0; overflow: hidden;">
+            <video
+              class="pour-video"
+              src="assets/heli_machine_demo.mp4"
+              poster="assets/heli_machine_demo_poster.jpg"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              aria-label="Heli machine dispensing a cup of frozen yogurt"
+            ></video>
           </div>
           <div class="visual-card" data-reveal>
             <div class="media-placeholder">
@@ -1556,7 +1588,7 @@
           <p class="visual-footnote">About the same footprint as a large refrigerator, plus clearance for service access.</p>
         </div>
 
-        <p class="visual-footnote">Lifestyle photos of real installed locations (lobby, gym, pool deck) will replace these placeholders once available — flagged for Lea; no video/photography budget confirmed yet.</p>
+        <p class="visual-footnote">More lifestyle photos of real installed locations will be added here as they become available.</p>
       </div>
     </section>
 
@@ -1608,18 +1640,18 @@
         <div class="steps-grid steps-grid--guest" data-reveal>
           <article class="step-card" data-reveal>
             <span class="step-number">1</span>
-            <h3>Choose</h3>
-            <p>Pick a size right at the machine — no app or account needed.</p>
+            <h3>Start your order</h3>
+            <p>Begin a new order right at the machine — no app or account needed.</p>
           </article>
           <article class="step-card" data-reveal>
             <span class="step-number">2</span>
-            <h3>Tap to pay</h3>
-            <p>Contactless payment, done in seconds.</p>
+            <h3>Select your toppings</h3>
+            <p>Choose the toppings you'd like to finish your cup.</p>
           </article>
           <article class="step-card" data-reveal>
             <span class="step-number">3</span>
-            <h3>Enjoy</h3>
-            <p>A fresh 5 oz cup of premium Greek frozen yogurt, dispensed on the spot.</p>
+            <h3>Pay &amp; enjoy</h3>
+            <p>Tap to pay, then enjoy a fresh 5 oz cup of premium Greek frozen yogurt.</p>
           </article>
         </div>
 
@@ -1681,7 +1713,7 @@
             <span class="spec-label">Depth</span>
           </div>
           <div class="spec-item">
-            <span class="spec-value">2–4 wks</span>
+            <span class="spec-value">4 wks</span>
             <span class="spec-label">Launch timeline</span>
           </div>
         </div>
@@ -1745,22 +1777,6 @@
       </div>
     </section>
 
-    <section id="social-proof">
-      <div class="page-shell section-card">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker">Social proof</p>
-            <h2>Early, honest, and hands-on.</h2>
-          </div>
-          <p class="section-intro">We don't have case studies yet — here's exactly where things stand today.</p>
-        </div>
-        <div class="founder-note" data-reveal>
-          <blockquote>&ldquo;We&rsquo;re a Miami-based team placing our first machines this year. Every install gets a personal fit check, a dedicated launch plan, and direct access to our team &mdash; not a call center.&rdquo;</blockquote>
-          <cite>&mdash; Founder&rsquo;s note, Heli Frozen Yogurt</cite>
-        </div>
-      </div>
-    </section>
-
     <section id="faq">
       <div class="page-shell section-card">
         <div class="section-heading">
@@ -1768,7 +1784,7 @@
             <p class="section-kicker">Questions</p>
             <h2>Answers before you have to ask.</h2>
           </div>
-          <p class="section-intro">The objections a property team is usually holding before they say yes — answered up front.</p>
+          <p class="section-intro">The questions we hear most from property teams, answered up front.</p>
         </div>
         <div class="faq-list">
           <details class="faq-item" data-reveal>
