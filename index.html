@@ -156,6 +156,13 @@
       transform: translateY(-2px);
     }
 
+    button.button {
+      font-family: inherit;
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+    }
+
     .button-primary {
       color: var(--white);
       background: var(--navy);
@@ -246,6 +253,15 @@
       flex-wrap: wrap;
       gap: 12px;
       margin-top: 34px;
+    }
+
+    .hero-microcopy {
+      margin: 16px 0 0;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--berry-dark);
     }
 
     .hero-proof {
@@ -602,7 +618,7 @@
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
     }
 
@@ -640,84 +656,26 @@
       font-size: 14px;
     }
 
-    .split {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 20px;
-      align-items: stretch;
+    .track-label {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      color: var(--navy);
+      font-size: 26px;
+      font-weight: 600;
+      margin: 36px 0 16px;
     }
 
-    .blue-panel {
-      border-radius: var(--radius-lg);
-      background: linear-gradient(160deg, rgba(23,56,103,.96), rgba(15,40,77,.96));
-      color: white;
-      padding: clamp(28px, 4.5vw, 46px);
-      position: relative;
-      overflow: hidden;
-      min-height: 420px;
-    }
-
-    .blue-panel::after {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      right: -80px;
-      top: -80px;
-      border-radius: 50%;
-      background: rgba(200,216,232,.15);
-    }
-
-    .blue-panel h2 {
-      color: white;
-      position: relative;
-      z-index: 1;
-    }
-
-    .blue-panel p {
-      position: relative;
-      z-index: 1;
-      color: rgba(255,255,255,.76);
-      margin: 22px 0 0;
-      font-size: 16px;
-    }
-
-    .check-list {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 14px;
-      padding: 0;
-      list-style: none;
-      margin: 28px 0 0;
-    }
-
-    .check-list li {
-      display: grid;
-      grid-template-columns: 28px 1fr;
-      gap: 12px;
-      align-items: start;
-      color: rgba(255,255,255,.88);
-      font-size: 14px;
-    }
-
-    .check-list li::before {
-      content: "✓";
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: white;
-      background: rgba(184,112,131,.88);
-      font-weight: 800;
-      line-height: 1;
+    .track-label:first-of-type {
+      margin-top: 0;
     }
 
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
+    }
+
+    .steps-grid--guest {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     .step-card {
@@ -960,10 +918,18 @@
 
       .hero-grid,
       .section-heading,
-      .split,
       .quote-strip,
       .cta-card {
         grid-template-columns: 1fr;
+      }
+
+      .steps-grid--guest {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .visual-grid,
+      .icon-steps {
+        grid-template-columns: 1fr 1fr;
       }
 
       .experience-card {
@@ -1122,7 +1088,10 @@
 
       .cards-grid,
       .steps-grid,
-      .places-grid {
+      .steps-grid--guest,
+      .places-grid,
+      .visual-grid,
+      .icon-steps {
         grid-template-columns: 1fr;
       }
 
@@ -1135,6 +1104,333 @@
       .footer-inner {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      .mid-cta {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+
+      .mid-cta .button {
+        width: 100%;
+      }
+
+      .form-grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* --- Trust bar --- */
+    #trust-bar {
+      padding: 0 0 10px;
+    }
+
+    .trust-bar {
+      margin: 0 auto;
+      max-width: 860px;
+      text-align: center;
+      padding: 15px 22px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.6);
+      border: 1px solid rgba(23, 56, 103, .11);
+      box-shadow: 0 14px 40px rgba(23, 56, 103, .08);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--navy-deep);
+    }
+
+    /* --- Visual proof / "Meet Heli" section --- */
+    .icon-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .icon-step {
+      text-align: center;
+      padding: 20px 12px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(23, 56, 103, .09);
+    }
+
+    .icon-circle {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 12px;
+      border-radius: 999px;
+      background: rgba(200,216,232,.6);
+      display: grid;
+      place-items: center;
+      color: var(--navy);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .icon-step span {
+      display: block;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .visual-card {
+      border-radius: 26px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(23, 56, 103, .09);
+      padding: 22px;
+    }
+
+    .media-placeholder {
+      border-radius: 18px;
+      min-height: 160px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
+      background: repeating-linear-gradient(135deg, rgba(23,56,103,.05), rgba(23,56,103,.05) 10px, rgba(23,56,103,.09) 10px, rgba(23,56,103,.09) 20px);
+      border: 1px dashed rgba(23, 56, 103, .3);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .media-placeholder strong {
+      display: block;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 21px;
+      color: var(--navy);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .scale-compare {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 32px;
+      padding: 10px 0 4px;
+    }
+
+    .scale-item {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .scale-shape {
+      border-radius: 10px;
+      background: rgba(23,56,103,.14);
+      border: 1px solid rgba(23,56,103,.22);
+      margin: 0 auto 10px;
+    }
+
+    .visual-footnote {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin: 14px 0 0;
+    }
+
+    /* --- Founder note / social proof --- */
+    .founder-note {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .founder-note blockquote {
+      margin: 0 0 16px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(22px, 3vw, 30px);
+      color: var(--navy);
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    .founder-note cite {
+      font-style: normal;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    /* --- Mid-page CTA banner --- */
+    .mid-cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 28px 32px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(23,56,103,.96), rgba(15,40,77,.96));
+    }
+
+    .mid-cta p {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(20px, 3vw, 28px);
+      color: white;
+      font-weight: 600;
+    }
+
+    /* --- FAQ accordion --- */
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      border-radius: 20px;
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(23, 56, 103, .1);
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .faq-item summary {
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 19px 22px;
+      cursor: pointer;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(184,112,131,.16);
+      color: var(--berry-dark);
+      display: grid;
+      place-items: center;
+      font-size: 15px;
+      font-weight: 800;
+      transition: transform .25s ease;
+    }
+
+    .faq-item[open] .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      margin: 0;
+      padding: 0 22px 20px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* --- Lead form --- */
+    .lead-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .form-row {
+      display: grid;
+      gap: 6px;
+    }
+
+    .form-row label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--navy-deep);
+    }
+
+    .form-row input,
+    .form-row select {
+      padding: 13px 15px;
+      border-radius: 14px;
+      border: 1px solid rgba(23, 56, 103, .18);
+      background: rgba(255,255,255,.85);
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .form-row input:focus,
+    .form-row select:focus {
+      outline: 2px solid var(--berry);
+      outline-offset: 1px;
+    }
+
+    .form-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .form-fallback {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 18px 0 0;
+    }
+
+    .form-fallback a {
+      color: var(--navy);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 2px 0 0;
+    }
+
+    /* --- Subtle scroll-reveal motion --- */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
       }
     }
   </style>
@@ -1155,9 +1451,10 @@
         <div class="nav-links" aria-label="Page sections">
           <a href="#why">Why Heli</a>
           <a href="#how">How it works</a>
-          <a href="#locations">Locations</a>
+          <a href="#locations">Where it fits</a>
+          <a href="#faq">FAQ</a>
         </div>
-        <a class="button button-primary" href="mailto:hello@helifrozenyogurt.com?subject=Heli%20location%20inquiry&body=Hi%20Heli%2C%0A%0AI%27d%20like%20to%20explore%20a%20frozen%20yogurt%20machine%20placement.%0A%0AProperty%20name%3A%0AAddress%3A%0AType%20of%20location%3A%0AEstimated%20foot%20traffic%3A%0ABest%20contact%3A%0A%0AThank%20you!">Get info</a>
+        <a class="button button-primary" href="#contact-form">Bring Heli to Your Property</a>
       </nav>
     </div>
   </header>
@@ -1167,12 +1464,13 @@
       <div class="page-shell hero-grid">
         <div>
           <div class="eyebrow"><span class="eyebrow-dot"></span> Now placing in select Miami locations</div>
-          <h1>Premium frozen yogurt, without adding a food-service operation.</h1>
-          <p class="hero-copy">Heli is a self-serve Greek frozen yogurt experience for modern buildings, hotels, campuses, offices, gyms, and high-traffic spaces. We place, operate, stock, and support the machine, so your location can offer a polished amenity with minimal lift.</p>
+          <h1>A five-star frozen yogurt moment. Zero operations for you.</h1>
+          <p class="hero-copy">Heli installs, stocks, and manages a self-serve Greek frozen yogurt machine at your property — so residents and guests get a beautiful new amenity, and your team does nothing but plug it in.</p>
           <div class="hero-actions">
-            <a class="button button-berry" href="mailto:hello@helifrozenyogurt.com?subject=Heli%20location%20inquiry&body=Hi%20Heli%2C%0A%0AI%27d%20like%20to%20explore%20a%20frozen%20yogurt%20machine%20placement.%0A%0AProperty%20name%3A%0AAddress%3A%0AType%20of%20location%3A%0AEstimated%20foot%20traffic%3A%0ABest%20contact%3A%0A%0AThank%20you!">Bring Heli to your location</a>
-            <a class="button button-secondary" href="#how">See how it works</a>
+            <a class="button button-berry" href="#contact-form">Bring Heli to Your Property</a>
+            <a class="button button-secondary" href="#how">See How It Works</a>
           </div>
+          <p class="hero-microcopy">Free site review · No cost to install · Live in 2–4 weeks</p>
           <div class="hero-proof" aria-label="Heli highlights">
             <span class="proof-chip">Cashless experience</span>
             <span class="proof-chip">Custom branding options</span>
@@ -1200,69 +1498,152 @@
       </div>
     </section>
 
+    <section id="trust-bar">
+      <div class="page-shell">
+        <p class="trust-bar" data-reveal>Now placing in Miami · Fully insured FL LLC · PCI-compliant · No cost to install</p>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="page-shell section-card">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">See it in action</p>
+            <h2>Tap to pay. Pick a size. Enjoy.</h2>
+          </div>
+          <p class="section-intro">Tap to pay, pick a size, and Heli dispenses a fresh 5 oz cup of premium Greek frozen yogurt — no app, no cash, no line.</p>
+        </div>
+
+        <div class="icon-steps" data-reveal>
+          <div class="icon-step">
+            <div class="icon-circle">1</div>
+            <span>Tap to pay</span>
+          </div>
+          <div class="icon-step">
+            <div class="icon-circle">2</div>
+            <span>Select size</span>
+          </div>
+          <div class="icon-step">
+            <div class="icon-circle">3</div>
+            <span>Enjoy</span>
+          </div>
+        </div>
+
+        <div class="visual-grid">
+          <div class="visual-card" data-reveal>
+            <div class="media-placeholder">
+              <div><strong>Pour video / GIF</strong>Cup in, yogurt dispenses, done — a 10&ndash;15 second loop. Highest-priority visual asset; pending footage.</div>
+            </div>
+          </div>
+          <div class="visual-card" data-reveal>
+            <div class="media-placeholder">
+              <div><strong>Finished cup photo</strong>A close-up styled like a dessert menu shot. Pending photography.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual-card" data-reveal style="margin-top: 16px;">
+          <div class="scale-compare">
+            <div class="scale-item">
+              <div class="scale-shape" style="width: 72px; height: 128px;"></div>
+              Heli machine<br>38.7&quot; × 36.6&quot; footprint
+            </div>
+            <div class="scale-item">
+              <div class="scale-shape" style="width: 76px; height: 132px;"></div>
+              Large refrigerator<br>for size reference
+            </div>
+          </div>
+          <p class="visual-footnote">About the same footprint as a large refrigerator, plus clearance for service access.</p>
+        </div>
+
+        <p class="visual-footnote">Lifestyle photos of real installed locations (lobby, gym, pool deck) will replace these placeholders once available — flagged for Lea; no video/photography budget confirmed yet.</p>
+      </div>
+    </section>
+
     <section id="why">
       <div class="page-shell section-card">
         <div class="section-heading">
           <div>
             <p class="section-kicker">Why location teams like it</p>
-            <h2>A memorable amenity that feels boutique.</h2>
+            <h2>A five-star treat your residents will actually talk about.</h2>
           </div>
           <p class="section-intro">Heli gives guests, residents, students, and visitors a quick treat that feels elevated, photogenic, and easy to use. For the property team, the goal is simple: add delight without adding complexity.</p>
         </div>
         <div class="cards-grid">
-          <article class="feature-card">
+          <article class="feature-card" data-reveal>
             <div class="icon-badge">01</div>
             <h3>Low-lift operation</h3>
             <p>Heli handles the machine, product, payment setup, service visits, cleaning routines, and operational support.</p>
           </article>
-          <article class="feature-card">
+          <article class="feature-card" data-reveal>
             <div class="icon-badge">02</div>
             <h3>Premium experience</h3>
             <p>A clean, branded, self-serve frozen yogurt moment that fits shared spaces better than a traditional food counter.</p>
           </article>
-          <article class="feature-card">
+          <article class="feature-card" data-reveal>
             <div class="icon-badge">03</div>
-            <h3>Flexible placement</h3>
-            <p>Use it as a resident perk, hotel amenity, campus treat, employee benefit, or revenue-share opportunity.</p>
+            <h3>Fits your property, your way</h3>
+            <p>Use it as a resident perk, hotel amenity, campus treat, or employee benefit.</p>
+          </article>
+          <article class="feature-card" data-reveal>
+            <div class="icon-badge">04</div>
+            <h3>Revenue, not just an amenity</h3>
+            <p>Earn a revenue share on every cup sold — at no cost to install, with a clear monthly payout report.</p>
           </article>
         </div>
       </div>
     </section>
 
     <section id="how">
-      <div class="page-shell split">
-        <div class="blue-panel">
-          <p class="section-kicker" style="color: rgba(255,255,255,.74);">How it works</p>
-          <h2>Simple for the property. Fun for everyone else.</h2>
-          <p>Heli is designed to make placement feel straightforward from the first conversation to launch day.</p>
-          <ul class="check-list">
-            <li>We review the location, visibility, power access, service access, and foot traffic fit.</li>
-            <li>We coordinate machine placement, launch support, and optional branded visuals for the location.</li>
-            <li>Guests use the machine directly, with cashless payment and simple instructions.</li>
-            <li>Heli manages the ongoing service plan, product refills, and operational support.</li>
-            <li>Your venue earns a revenue share from every cup sold, with transparent monthly reporting.</li>
-          </ul>
+      <div class="page-shell section-card">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">How it works</p>
+            <h2>Simple for the property. Fun for everyone else.</h2>
+          </div>
+          <p class="section-intro">Heli is designed to make placement feel straightforward from the first conversation to launch day — and just as easy for the people using the machine every day.</p>
         </div>
-        <div class="steps-grid">
-          <article class="step-card">
+
+        <h3 class="track-label">For your guests</h3>
+        <div class="steps-grid steps-grid--guest" data-reveal>
+          <article class="step-card" data-reveal>
+            <span class="step-number">1</span>
+            <h3>Choose</h3>
+            <p>Pick a size right at the machine — no app or account needed.</p>
+          </article>
+          <article class="step-card" data-reveal>
+            <span class="step-number">2</span>
+            <h3>Tap to pay</h3>
+            <p>Contactless payment, done in seconds.</p>
+          </article>
+          <article class="step-card" data-reveal>
+            <span class="step-number">3</span>
+            <h3>Enjoy</h3>
+            <p>A fresh 5 oz cup of premium Greek frozen yogurt, dispensed on the spot.</p>
+          </article>
+        </div>
+
+        <h3 class="track-label">For your team</h3>
+        <div class="steps-grid" data-reveal>
+          <article class="step-card" data-reveal>
             <span class="step-number">1</span>
             <h3>Fit check</h3>
-            <p>We look at the space, traffic pattern, audience, power access, and whether the machine can be serviced properly.</p>
+            <p>We review the space, visibility, power access, service access, and foot traffic to confirm it's a good fit.</p>
           </article>
-          <article class="step-card">
+          <article class="step-card" data-reveal>
             <span class="step-number">2</span>
             <h3>Placement plan</h3>
-            <p>We align on the best location, partnership structure, launch timing, and any custom branding opportunities.</p>
+            <p>We align on the best location, partnership structure, launch timing, and any custom branding.</p>
           </article>
-          <article class="step-card">
+          <article class="step-card" data-reveal>
             <span class="step-number">3</span>
             <h3>Launch moment</h3>
-            <p>We can support your launch with signage, QR codes, promo codes, and clear guest instructions.</p>
+            <p>We support your launch with signage, QR codes, promo codes, and clear guest instructions.</p>
           </article>
-          <article class="step-card">
+          <article class="step-card" data-reveal>
             <span class="step-number">4</span>
             <h3>Ongoing support</h3>
-            <p>We keep the experience running with regular refills, cleaning routines, maintenance coordination, and support.</p>
+            <p>Heli manages refills, cleaning, maintenance, and support — with transparent monthly reporting on your revenue share.</p>
           </article>
         </div>
       </div>
@@ -1315,6 +1696,13 @@
       </div>
     </section>
 
+    <section id="mid-cta">
+      <div class="page-shell mid-cta" data-reveal>
+        <p>Ready to bring Heli to your property?</p>
+        <a class="button button-berry" href="#contact-form">Bring Heli to Your Property</a>
+      </div>
+    </section>
+
     <section id="locations">
       <div class="page-shell section-card">
         <div class="section-heading">
@@ -1325,29 +1713,29 @@
           <p class="section-intro">Heli works best where people already spend time, pass by often, and appreciate a convenient treat that feels fresh and premium.</p>
         </div>
         <div class="places-grid">
-          <article class="place-card">
+          <article class="place-card" data-reveal>
             <strong>Residential</strong>
-            <p>Apartment communities, student housing, and amenity floors.</p>
+            <p>A resident perk that shows up on every leasing tour — the kind of amenity people mention in reviews.</p>
           </article>
-          <article class="place-card">
+          <article class="place-card" data-reveal>
             <strong>Hotels</strong>
-            <p>Lobbies, pool decks, lounges, and guest amenity areas.</p>
+            <p>A guest-facing treat for lobbies, pool decks, and lounges that adds a memorable, photogenic moment to the stay.</p>
           </article>
-          <article class="place-card">
-            <strong>Campuses</strong>
-            <p>Universities, colleges, libraries, and student hubs.</p>
-          </article>
-          <article class="place-card">
-            <strong>Wellness</strong>
-            <p>Gyms, studios, sports clubs, and recovery spaces.</p>
-          </article>
-          <article class="place-card">
+          <article class="place-card" data-reveal>
             <strong>Offices</strong>
-            <p>Corporate buildings, coworking spaces, and break areas.</p>
+            <p>A break-room upgrade employees actually notice — no kitchen staff, no scheduling, no mess.</p>
           </article>
-          <article class="place-card">
-            <strong>Retail</strong>
-            <p>Malls, food halls, entertainment venues, and high-traffic plazas.</p>
+          <article class="place-card" data-reveal>
+            <strong>Gyms &amp; wellness</strong>
+            <p>A better-for-you indulgence that fits the post-workout moment — no added sugar, fat-free.</p>
+          </article>
+          <article class="place-card" data-reveal>
+            <strong>Universities</strong>
+            <p>A student-hub treat that's available late, always self-serve, and easy for housing or dining services to approve.</p>
+          </article>
+          <article class="place-card" data-reveal>
+            <strong>Retail &amp; malls</strong>
+            <p>Incremental revenue from underused corridor or plaza space, with zero staffing burden on the property.</p>
           </article>
         </div>
         <div class="quote-strip">
@@ -1357,26 +1745,123 @@
       </div>
     </section>
 
+    <section id="social-proof">
+      <div class="page-shell section-card">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Social proof</p>
+            <h2>Early, honest, and hands-on.</h2>
+          </div>
+          <p class="section-intro">We don't have case studies yet — here's exactly where things stand today.</p>
+        </div>
+        <div class="founder-note" data-reveal>
+          <blockquote>&ldquo;We&rsquo;re a Miami-based team placing our first machines this year. Every install gets a personal fit check, a dedicated launch plan, and direct access to our team &mdash; not a call center.&rdquo;</blockquote>
+          <cite>&mdash; Founder&rsquo;s note, Heli Frozen Yogurt</cite>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="page-shell section-card">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Questions</p>
+            <h2>Answers before you have to ask.</h2>
+          </div>
+          <p class="section-intro">The objections a property team is usually holding before they say yes — answered up front.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item" data-reveal>
+            <summary class="faq-question">Who manages the machine? <span class="faq-icon">+</span></summary>
+            <p class="faq-answer">Heli does, entirely. We handle installation, product supply, restocking, cleaning, maintenance, repairs, customer support, and refunds. Your team doesn't operate or troubleshoot anything.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary class="faq-question">What does the property need to provide? <span class="faq-icon">+</span></summary>
+            <p class="faq-answer">Just a standard 120V outlet and a small footprint of floor space — no plumbing, no buildout, and no staff time.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary class="faq-question">How much space does it take? <span class="faq-icon">+</span></summary>
+            <p class="faq-answer">The machine is 38.7" wide and 36.6" deep — about the footprint of a large refrigerator, plus clearance for service access.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary class="faq-question">Is there an upfront cost to the property? <span class="faq-icon">+</span></summary>
+            <p class="faq-answer">No. Heli covers installation and equipment. Most placements run on a revenue-share or simple partnership structure — we'll walk you through the right fit for your property during the site review.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary class="faq-question">How is it restocked? <span class="faq-icon">+</span></summary>
+            <p class="faq-answer">Heli monitors the machine remotely and schedules refills on a regular service visit cadence, so it stays stocked without any action from your team.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary class="faq-question">What happens if there's an issue? <span class="faq-icon">+</span></summary>
+            <p class="faq-answer">The machine has remote, real-time fault monitoring and shuts down automatically if something's wrong, so it never serves a bad product. Our team is notified immediately and dispatches service directly — you don't have to call anyone.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary class="faq-question">Is it clean and safe? <span class="faq-icon">+</span></summary>
+            <p class="faq-answer">Yes. The unit is fully self-contained, uses a sealed internal dispensing chamber, and follows a set sanitation schedule. Heli is fully insured and PCI-compliant for payments.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary class="faq-question">What kind of product is served? <span class="faq-icon">+</span></summary>
+            <p class="faq-answer">A 5 oz portion of premium Greek frozen yogurt with no added sugar and no fat. It contains milk; full ingredient and allergen information is available on request.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary class="faq-question">Is it available 24/7? <span class="faq-icon">+</span></summary>
+            <p class="faq-answer">In most locations, yes — the machine runs on its own schedule, so guests or residents can use it any time the space is accessible, not just during staffed hours.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary class="faq-question">Is there a contract, and can we change our minds? <span class="faq-icon">+</span></summary>
+            <p class="faq-answer">We keep initial placements low-commitment — typically a pilot period — so both sides can confirm it's a good fit before anything longer-term is discussed.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section class="cta" id="contact">
       <div class="page-shell cta-card">
         <div class="cta-content">
           <p class="section-kicker">Explore a placement</p>
           <h2>Want Heli at your property?</h2>
-          <p>Send us the location details and we will review whether it is a good fit. We can also discuss branded machine vinyl, resident or guest promotions, and the best partnership structure for your space.</p>
-          <div class="hero-actions">
-            <a class="button button-berry" href="mailto:hello@helifrozenyogurt.com?subject=Heli%20location%20inquiry&body=Hi%20Heli%2C%0A%0AI%27d%20like%20to%20explore%20a%20frozen%20yogurt%20machine%20placement.%0A%0AProperty%20name%3A%0AAddress%3A%0AType%20of%20location%3A%0AEstimated%20foot%20traffic%3A%0ABest%20contact%3A%0A%0AThank%20you!">Email hello@helifrozenyogurt.com</a>
-          </div>
+          <p>Send us the details and we'll review whether it's a good fit — including branded machine options, resident or guest promotions, and the right partnership structure for your space.</p>
+          <p class="form-fallback">Prefer email? Write to <a href="mailto:hello@helifrozenyogurt.com">hello@helifrozenyogurt.com</a></p>
         </div>
-        <aside class="inquiry-card">
-          <h3>Helpful details to include</h3>
-          <ul class="inquiry-list">
-            <li>Property name and address</li>
-            <li>Type of location and audience</li>
-            <li>Estimated daily foot traffic</li>
-            <li>Potential placement area</li>
-            <li>Best contact person</li>
-          </ul>
-          <a class="button button-primary" href="mailto:hello@helifrozenyogurt.com?subject=Heli%20location%20inquiry&body=Hi%20Heli%2C%0A%0AI%27d%20like%20to%20explore%20a%20frozen%20yogurt%20machine%20placement.%0A%0AProperty%20name%3A%0AAddress%3A%0AType%20of%20location%3A%0AEstimated%20foot%20traffic%3A%0ABest%20contact%3A%0A%0AThank%20you!">Start the conversation</a>
+        <aside class="inquiry-card" id="contact-form">
+          <h3>Bring Heli to Your Property</h3>
+          <form class="lead-form" id="heliLeadForm" novalidate>
+            <div class="form-row">
+              <label for="propertyName">Property name</label>
+              <input type="text" id="propertyName" name="propertyName" required />
+            </div>
+            <div class="form-row">
+              <label for="propertyType">Property type</label>
+              <select id="propertyType" name="propertyType" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Residential</option>
+                <option>Hotel</option>
+                <option>Office</option>
+                <option>Gym or wellness</option>
+                <option>University</option>
+                <option>Retail or mall</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="addressCity">Address or city</label>
+              <input type="text" id="addressCity" name="addressCity" required />
+            </div>
+            <div class="form-row">
+              <label for="footTraffic">Estimated daily foot traffic</label>
+              <input type="text" id="footTraffic" name="footTraffic" placeholder="Low, medium, high, or a rough number" />
+            </div>
+            <div class="form-row">
+              <label for="contactName">Best contact</label>
+              <div class="form-grid-3">
+                <input type="text" id="contactName" name="contactName" placeholder="Name" required />
+                <input type="email" id="contactEmail" name="contactEmail" placeholder="Email" required />
+                <input type="tel" id="contactPhone" name="contactPhone" placeholder="Phone (optional)" />
+              </div>
+            </div>
+            <button type="submit" class="button button-primary">Bring Heli to Your Property</button>
+            <p class="form-note">Submitting opens a pre-filled email to hello@helifrozenyogurt.com so you can review and send it yourself.</p>
+          </form>
         </aside>
       </div>
     </section>
@@ -1393,5 +1878,67 @@
       <span style="color:var(--muted);font-size:11px;letter-spacing:.04em;text-transform:none;font-weight:400;opacity:.8;">Fully insured FL LLC · PCI-compliant · Sales tax registered · Contains milk</span>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      // Lead form: build a pre-filled email from the structured fields.
+      // NOTE for Lea: this ships working today with zero backend. If you'd rather
+      // capture submissions directly (e.g. into a spreadsheet or inbox without
+      // opening the visitor's mail client), connect a form backend such as
+      // Formspree, Getform, or a serverless endpoint and this handler can be
+      // swapped for a fetch() POST in a few lines.
+      var form = document.getElementById('heliLeadForm');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+          var data = new FormData(form);
+          var contact = [data.get('contactName') || '', data.get('contactEmail') || '', data.get('contactPhone') || '']
+            .filter(Boolean)
+            .join(', ');
+          var lines = [
+            'Property name: ' + (data.get('propertyName') || ''),
+            'Property type: ' + (data.get('propertyType') || ''),
+            'Address or city: ' + (data.get('addressCity') || ''),
+            'Estimated daily foot traffic: ' + (data.get('footTraffic') || ''),
+            'Best contact: ' + contact
+          ];
+          var subject = encodeURIComponent('Heli location inquiry');
+          var body = encodeURIComponent(
+            "Hi Heli,\n\nI'd like to explore a frozen yogurt machine placement.\n\n" +
+            lines.join('\n') +
+            '\n\nThank you!'
+          );
+          window.location.href = 'mailto:hello@helifrozenyogurt.com?subject=' + subject + '&body=' + body;
+        });
+      }
+
+      // Subtle fade/slide-in on scroll for cards and stats.
+      var revealEls = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window && revealEls.length) {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        revealEls.forEach(function (el) {
+          observer.observe(el);
+        });
+      } else {
+        revealEls.forEach(function (el) {
+          el.classList.add('is-visible');
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
