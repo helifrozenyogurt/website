@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/heli_transparent_bg.webp" fetchpriority="high">
   <style>
     :root {
       --navy: #173867;
@@ -59,6 +60,10 @@
     img {
       display: block;
       max-width: 100%;
+    }
+
+    picture {
+      display: contents;
     }
 
     .page-shell {
@@ -1140,7 +1145,10 @@
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand-lockup" href="#top" aria-label="Heli Frozen Yogurt home">
           <div>
-            <img class="brand-logo" src="assets/heli-logo.png" alt="Heli" />
+            <picture>
+              <source srcset="assets/heli-logo.webp" type="image/webp" />
+              <img class="brand-logo" src="assets/heli-logo.png" alt="Heli" width="130" height="47" decoding="async" />
+            </picture>
             <span class="brand-subtext">Greek · Frozen · Yogurt</span>
           </div>
         </a>
@@ -1174,11 +1182,17 @@
 
         <div class="experience-card" aria-label="Illustration of the Heli machine and frozen yogurt experience">
           <div class="mini-logo-card">
-            <img src="assets/heli-logo.png" alt="Heli" />
+            <picture>
+              <source srcset="assets/heli-logo.webp" type="image/webp" />
+              <img src="assets/heli-logo.png" alt="Heli" width="112" height="41" decoding="async" />
+            </picture>
             <span>Greek · Frozen · Yogurt</span>
           </div>
           <div class="machine-photo-wrap">
-            <img src="assets/heli_transparent_bg.png" alt="Heli frozen yogurt vending machine" class="machine-photo" />
+            <picture>
+              <source srcset="assets/heli_transparent_bg.webp" type="image/webp" />
+              <img src="assets/heli_transparent_bg.png" alt="Heli frozen yogurt vending machine" class="machine-photo" width="1100" height="1423" fetchpriority="high" decoding="async" />
+            </picture>
           </div>
           <div class="floating-note note-one">Guest-ready</div>
           <div class="floating-note note-two">Small footprint</div>
@@ -1370,7 +1384,10 @@
 
   <footer>
     <div class="page-shell footer-inner">
-      <img class="footer-logo" src="assets/heli-logo.png" alt="Heli" />
+      <picture>
+        <source srcset="assets/heli-logo.webp" type="image/webp" />
+        <img class="footer-logo" src="assets/heli-logo.png" alt="Heli" width="72" height="26" loading="lazy" decoding="async" />
+      </picture>
       <span>Greek · Frozen · Yogurt</span>
       <a href="mailto:hello@helifrozenyogurt.com">hello@helifrozenyogurt.com</a>
       <span style="color:var(--muted);font-size:11px;letter-spacing:.04em;text-transform:none;font-weight:400;opacity:.8;">Fully insured FL LLC · PCI-compliant · Sales tax registered · Contains milk</span>
