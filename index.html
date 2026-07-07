@@ -951,7 +951,7 @@
       }
 
       .visual-grid {
-        grid-template-columns: minmax(150px, 240px) 1fr;
+        grid-template-columns: 1fr;
       }
 
       .experience-card {
@@ -1205,7 +1205,7 @@
 
     .visual-grid {
       display: grid;
-      grid-template-columns: minmax(180px, 300px) 1fr;
+      grid-template-columns: 0.85fr 1.3fr 0.85fr;
       align-items: stretch;
       gap: 16px;
     }
@@ -1650,22 +1650,21 @@
               <img class="cup-photo" src="assets/heli_cup_photo.jpg" alt="A finished cup of Heli premium Greek frozen yogurt with pistachio and matcha topping" loading="lazy" decoding="async" />
             </picture>
           </div>
-        </div>
-
-        <div class="visual-card" data-reveal style="margin-top: 16px;">
-          <div class="dim-photo-wrap">
-            <picture>
-              <source srcset="assets/heli_transparent_bg.webp" type="image/webp" />
-              <img src="assets/heli_transparent_bg.png" alt="Heli machine with width and height dimensions labeled" decoding="async" />
-            </picture>
-            <div class="dim-h" style="top: 8%; left: 17%; right: 21%;">
-              <span class="dim-label dim-h-label">38.7&quot; wide</span>
+          <div class="visual-card" data-reveal>
+            <div class="dim-photo-wrap">
+              <picture>
+                <source srcset="assets/heli_transparent_bg.webp" type="image/webp" />
+                <img src="assets/heli_transparent_bg.png" alt="Heli machine with width and height dimensions labeled" decoding="async" />
+              </picture>
+              <div class="dim-h" style="top: 8%; left: 17%; right: 21%;">
+                <span class="dim-label dim-h-label">38.7&quot; wide</span>
+              </div>
+              <div class="dim-v" style="left: 11%; top: 12%; bottom: 14%;">
+                <span class="dim-label dim-v-label">~70&quot; tall</span>
+              </div>
             </div>
-            <div class="dim-v" style="left: 11%; top: 12%; bottom: 14%;">
-              <span class="dim-label dim-v-label">~70&quot; tall</span>
-            </div>
+            <p class="visual-footnote">38.7&quot; W × 36.6&quot; D × ~70&quot; H (height approximate)</p>
           </div>
-          <p class="visual-footnote">38.7&quot; wide × 36.6&quot; deep × ~70&quot; tall (height approximate) — about the same footprint as a large refrigerator, plus clearance for service access.</p>
         </div>
       </div>
     </section>
