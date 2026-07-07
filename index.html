@@ -1258,36 +1258,87 @@
       font-weight: 600;
     }
 
-    .scale-compare {
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 32px;
-      padding: 10px 0 4px;
+    .dim-photo-wrap {
+      position: relative;
+      max-width: 280px;
+      margin: 26px auto 4px;
     }
 
-    .scale-item {
-      text-align: center;
+    .dim-photo-wrap img {
+      width: 100%;
+      display: block;
+    }
+
+    .dim-h {
+      position: absolute;
+      height: 0;
+      border-top: 1.5px solid var(--navy);
+    }
+
+    .dim-h::before,
+    .dim-h::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      width: 1.5px;
+      height: 10px;
+      background: var(--navy);
+    }
+
+    .dim-h::before {
+      left: 0;
+    }
+
+    .dim-h::after {
+      right: 0;
+    }
+
+    .dim-v {
+      position: absolute;
+      width: 0;
+      border-left: 1.5px solid var(--navy);
+    }
+
+    .dim-v::before,
+    .dim-v::after {
+      content: "";
+      position: absolute;
+      left: -5px;
+      height: 1.5px;
+      width: 10px;
+      background: var(--navy);
+    }
+
+    .dim-v::before {
+      top: 0;
+    }
+
+    .dim-v::after {
+      bottom: 0;
+    }
+
+    .dim-label {
+      position: absolute;
       font-size: 11px;
-      color: var(--muted);
-      font-weight: 600;
-      line-height: 1.5;
-    }
-
-    .scale-shape {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      background: rgba(23,56,103,.14);
-      border: 1px solid rgba(23,56,103,.22);
+      font-weight: 700;
       color: var(--navy);
-      margin: 0 auto 10px;
+      background: var(--cream);
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(23, 56, 103, .16);
+      white-space: nowrap;
     }
 
-    .scale-shape svg {
-      width: 44%;
-      height: 44%;
+    .dim-h-label {
+      top: -14px;
+      left: 50%;
+      transform: translate(-50%, -100%);
+    }
+
+    .dim-v-label {
+      left: 0;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
 
     .visual-footnote {
@@ -1602,30 +1653,19 @@
         </div>
 
         <div class="visual-card" data-reveal style="margin-top: 16px;">
-          <div class="scale-compare">
-            <div class="scale-item">
-              <div class="scale-shape" style="width: 72px; height: 128px;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="4" y="2" width="16" height="20" rx="3" />
-                  <rect x="7" y="4.5" width="10" height="9.5" rx="1.5" />
-                  <path d="M9.3 16.2 L14.7 16.2 L13.6 19.6 L10.4 19.6 Z" fill="currentColor" stroke="none" />
-                </svg>
-              </div>
-              Heli machine<br>38.7&quot; × 36.6&quot; footprint
+          <div class="dim-photo-wrap">
+            <picture>
+              <source srcset="assets/heli_transparent_bg.webp" type="image/webp" />
+              <img src="assets/heli_transparent_bg.png" alt="Heli machine with width and height dimensions labeled" decoding="async" />
+            </picture>
+            <div class="dim-h" style="top: 8%; left: 17%; right: 21%;">
+              <span class="dim-label dim-h-label">38.7&quot; wide</span>
             </div>
-            <div class="scale-item">
-              <div class="scale-shape" style="width: 76px; height: 132px;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="5" y="2" width="14" height="20" rx="2" />
-                  <line x1="5" y1="9" x2="19" y2="9" />
-                  <line x1="16.5" y1="4.5" x2="16.5" y2="7" />
-                  <line x1="16.5" y1="11.5" x2="16.5" y2="17" />
-                </svg>
-              </div>
-              Large refrigerator<br>for size reference
+            <div class="dim-v" style="left: 11%; top: 12%; bottom: 14%;">
+              <span class="dim-label dim-v-label">~70&quot; tall</span>
             </div>
           </div>
-          <p class="visual-footnote">About the same footprint as a large refrigerator, plus clearance for service access.</p>
+          <p class="visual-footnote">38.7&quot; wide × 36.6&quot; deep × ~70&quot; tall (height approximate) — about the same footprint as a large refrigerator, plus clearance for service access.</p>
         </div>
       </div>
     </section>
