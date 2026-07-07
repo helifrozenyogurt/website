@@ -9,6 +9,11 @@
   <meta property="og:title" content="Heli Frozen Yogurt" />
   <meta property="og:description" content="A premium self-serve Greek frozen yogurt amenity for modern locations." />
   <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192x192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1267,10 +1272,19 @@
     }
 
     .scale-shape {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-radius: 10px;
       background: rgba(23,56,103,.14);
       border: 1px solid rgba(23,56,103,.22);
+      color: var(--navy);
       margin: 0 auto 10px;
+    }
+
+    .scale-shape svg {
+      width: 44%;
+      height: 44%;
     }
 
     .visual-footnote {
@@ -1587,11 +1601,25 @@
         <div class="visual-card" data-reveal style="margin-top: 16px;">
           <div class="scale-compare">
             <div class="scale-item">
-              <div class="scale-shape" style="width: 72px; height: 128px;"></div>
+              <div class="scale-shape" style="width: 72px; height: 128px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="5" y="2" width="14" height="20" rx="2.5" />
+                  <rect x="7.5" y="4.5" width="9" height="7.5" rx="1" />
+                  <circle cx="9.5" cy="17" r="0.9" fill="currentColor" stroke="none" />
+                  <path d="M13 15.2c0-1.1.9-1.6 1.8-1.6s1.8.5 1.8 1.6c0 1.6-1.8 2.6-1.8 2.6s-1.8-1-1.8-2.6Z" fill="currentColor" stroke="none" />
+                </svg>
+              </div>
               Heli machine<br>38.7&quot; × 36.6&quot; footprint
             </div>
             <div class="scale-item">
-              <div class="scale-shape" style="width: 76px; height: 132px;"></div>
+              <div class="scale-shape" style="width: 76px; height: 132px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="5" y="2" width="14" height="20" rx="2" />
+                  <line x1="5" y1="9" x2="19" y2="9" />
+                  <line x1="16.5" y1="4.5" x2="16.5" y2="7" />
+                  <line x1="16.5" y1="11.5" x2="16.5" y2="17" />
+                </svg>
+              </div>
               Large refrigerator<br>for size reference
             </div>
           </div>
