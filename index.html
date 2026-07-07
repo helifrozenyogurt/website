@@ -1232,6 +1232,15 @@
       background: #0f284d;
     }
 
+    .cup-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      max-height: 440px;
+      object-fit: cover;
+    }
+
     .media-placeholder strong {
       display: block;
       font-family: "Cormorant Garamond", Georgia, serif;
@@ -1567,10 +1576,11 @@
               aria-label="Heli machine dispensing a cup of frozen yogurt"
             ></video>
           </div>
-          <div class="visual-card" data-reveal>
-            <div class="media-placeholder">
-              <div><strong>Finished cup photo</strong>A close-up styled like a dessert menu shot. Pending photography.</div>
-            </div>
+          <div class="visual-card" data-reveal style="padding: 0; overflow: hidden;">
+            <picture>
+              <source srcset="assets/heli_cup_photo.webp" type="image/webp" />
+              <img class="cup-photo" src="assets/heli_cup_photo.jpg" alt="A finished cup of Heli premium Greek frozen yogurt with pistachio and matcha topping" loading="lazy" decoding="async" />
+            </picture>
           </div>
         </div>
 
