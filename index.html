@@ -1265,9 +1265,17 @@
     .cup-photo {
       display: block;
       width: 100%;
-      height: 100%;
-      min-height: 280px;
+      aspect-ratio: 1100 / 1423;
       object-fit: cover;
+      object-position: center 42%;
+      border-radius: 16px;
+    }
+
+    .visual-card picture { display: block; }
+
+    .dim-standalone {
+      max-width: 380px;
+      margin: 8px auto 0;
     }
 
     .media-placeholder strong {
@@ -1698,35 +1706,38 @@
             ></video>
           </div>
           <div class="visual-card" data-reveal>
-            <div class="dim-photo-wrap">
-              <picture>
-                <source srcset="assets/heli_transparent_bg.webp" type="image/webp" />
-                <img src="assets/heli_transparent_bg.png" alt="Heli machine with width and height dimensions labeled" decoding="async" />
-              </picture>
-              <div class="dim-h" style="top: 8%; left: 17%; right: 21%;">
-                <span class="dim-label dim-h-label">38.7&quot; wide</span>
-              </div>
-              <div class="dim-v" style="left: 11%; top: 12%; bottom: 14%;">
-                <span class="dim-label dim-v-label">~70&quot; tall</span>
-              </div>
-            </div>
-            <p class="visual-footnote">38.7&quot; W × 36.6&quot; D × ~70&quot; H (height approximate)</p>
+            <picture>
+              <source srcset="assets/heli_cup_photo.webp" type="image/webp" />
+              <img class="cup-photo" src="assets/heli_cup_photo.jpg" alt="Close-up of a finished cup of Heli premium Greek frozen yogurt with pistachio and matcha topping" loading="lazy" decoding="async" />
+            </picture>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="product-showcase">
-      <div class="page-shell showcase-band">
-        <div class="showcase-media" data-reveal>
-          <picture>
-            <source srcset="assets/heli_cup_photo.webp" type="image/webp" />
-            <img src="assets/heli_cup_photo.jpg" alt="A finished cup of Heli premium Greek frozen yogurt with pistachio and matcha topping" loading="lazy" decoding="async" />
-          </picture>
+    <section id="dimensions">
+      <div class="page-shell section-card">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Dimensions</p>
+            <h2>Roughly the footprint of a large refrigerator.</h2>
+          </div>
+          <p class="section-intro">38.7&quot; wide × 36.6&quot; deep × ~70&quot; tall (height approximate), plus clearance for service access. One standard outlet, no plumbing, no staff.</p>
         </div>
-        <div class="showcase-copy" data-reveal>
-          <p class="showcase-quote">A fresh 5&nbsp;oz cup of premium Greek frozen yogurt.</p>
-          <p class="showcase-sub">No app · No cash · No line</p>
+        <div class="dim-standalone" data-reveal>
+          <div class="dim-photo-wrap">
+            <picture>
+              <source srcset="assets/heli_transparent_bg.webp" type="image/webp" />
+              <img src="assets/heli_transparent_bg.png" alt="Heli machine with width and height dimensions labeled" decoding="async" />
+            </picture>
+            <div class="dim-h" style="top: 8%; left: 17%; right: 21%;">
+              <span class="dim-label dim-h-label">38.7&quot; wide</span>
+            </div>
+            <div class="dim-v" style="left: 11%; top: 12%; bottom: 14%;">
+              <span class="dim-label dim-v-label">~70&quot; tall</span>
+            </div>
+          </div>
+          <p class="visual-footnote">38.7&quot; W × 36.6&quot; D × ~70&quot; H (height approximate)</p>
         </div>
       </div>
     </section>
