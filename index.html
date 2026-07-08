@@ -1280,6 +1280,44 @@
       margin: 8px auto 0;
     }
 
+    /* --- "See it in place" real-installation band --- */
+    .place-band {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(28px, 5vw, 60px);
+      align-items: center;
+    }
+    .place-photo {
+      position: relative;
+    }
+    .place-photo img {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+    .place-photo::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 34px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--butter);
+      box-shadow: 0 4px 12px -4px rgba(32, 55, 95, .28);
+      z-index: 2;
+    }
+    .place-intro {
+      font-size: 17px;
+      color: var(--navy);
+      max-width: 46ch;
+      margin-top: 18px;
+    }
+    @media (max-width: 820px) {
+      .place-band { grid-template-columns: 1fr; gap: 26px; }
+    }
+
     .media-placeholder strong {
       display: block;
       font-family: "Cormorant Garamond", Georgia, serif;
@@ -1680,6 +1718,24 @@
     <section id="trust-bar">
       <div class="page-shell">
         <p class="trust-bar" data-reveal>Now placing in Miami · Fully insured FL LLC · PCI-compliant · No cost to install</p>
+      </div>
+    </section>
+
+    <section id="in-place">
+      <div class="page-shell section-card">
+        <div class="place-band">
+          <div class="place-photo" data-reveal>
+            <picture>
+              <source srcset="assets/heli_gio_midtown.webp" type="image/webp" />
+              <img src="assets/heli_gio_midtown.jpg" alt="A self-serve Heli machine installed in a premium residential community lobby" width="1122" height="1402" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <div class="place-copy" data-reveal>
+            <p class="section-kicker">Now placing in Miami</p>
+            <h2>See it where it lives.</h2>
+            <p class="section-intro place-intro">A self-serve Heli machine in a residential community setting — compact and styled to belong in a premium shared space instead of looking like vending. This is the amenity residents, guests, and staff actually notice.</p>
+          </div>
+        </div>
       </div>
     </section>
 
