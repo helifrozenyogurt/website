@@ -273,7 +273,7 @@
     h1 {
       max-width: 760px;
       font-weight: 300;
-      font-size: clamp(46px, 6.4vw, 84px);
+      font-size: clamp(40px, 5.4vw, 70px);
       letter-spacing: -.005em;
       line-height: 1.04;
     }
@@ -324,7 +324,7 @@
     .experience-card {
       position: relative;
       overflow: hidden;
-      min-height: 600px;
+      min-height: 660px;
       border-radius: 42px;
       background: linear-gradient(145deg, rgba(255,255,255,.72), rgba(246,248,249,.94));
       border: 1px solid rgba(32, 55, 95, .11);
@@ -382,12 +382,12 @@
 
     .machine-photo-wrap {
       position: absolute;
-      inset: 94px 0 30px;
+      inset: 88px 0 20px;
       z-index: 2;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 20px;
+      padding: 0 4px;
     }
 
     .machine-photo {
@@ -1228,7 +1228,7 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 340px));
       justify-content: center;
-      align-items: center;
+      align-items: start;
       gap: clamp(20px, 4vw, 48px);
     }
 
@@ -1236,7 +1236,7 @@
       border-radius: 26px;
       background: rgba(255,255,255,.68);
       border: 1px solid rgba(32, 55, 95, .09);
-      padding: 22px;
+      padding: 14px;
     }
 
     .media-placeholder {
@@ -1256,10 +1256,9 @@
     .pour-video {
       display: block;
       width: 100%;
-      height: auto;
-      aspect-ratio: 9 / 16;
-      max-height: 660px;
-      object-fit: cover;
+      aspect-ratio: 1100 / 1423;
+      object-fit: contain;
+      border-radius: 16px;
       background: var(--navy-900);
     }
 
@@ -1282,12 +1281,21 @@
 
     .dim-photo-wrap {
       position: relative;
-      max-width: 330px;
-      margin: 8px auto 4px;
+      width: 100%;
+      aspect-ratio: 1100 / 1423;
+      margin: 0;
+    }
+
+    .dim-photo-wrap picture {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
     .dim-photo-wrap img {
       width: 100%;
+      height: 100%;
+      object-fit: contain;
       display: block;
     }
 
@@ -1691,7 +1699,7 @@
         </div>
 
         <div class="visual-grid">
-          <div class="visual-card" data-reveal style="padding: 0; overflow: hidden;">
+          <div class="visual-card" data-reveal>
             <video
               class="pour-video"
               src="assets/heli_machine_demo.mp4"
