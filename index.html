@@ -326,7 +326,7 @@
       overflow: hidden;
       min-height: 600px;
       border-radius: 42px;
-      background: linear-gradient(145deg, rgba(255,255,255,.72), rgba(251,247,239,.94));
+      background: linear-gradient(145deg, rgba(255,255,255,.72), rgba(246,248,249,.94));
       border: 1px solid rgba(32, 55, 95, .11);
       box-shadow: var(--shadow);
       padding: 30px;
@@ -582,7 +582,7 @@
       width: 68px;
       height: 26px;
       border-radius: 999px;
-      background: rgba(251,247,239,.9);
+      background: rgba(246,248,249,.9);
       display: grid;
       place-items: center;
       color: var(--navy);
@@ -622,7 +622,7 @@
 
     .section-card {
       border-radius: var(--radius-lg);
-      background: rgba(251,247,239,.86);
+      background: rgba(246,248,249,.86);
       border: 1px solid rgba(32, 55, 95, .11);
       box-shadow: var(--shadow);
       padding: clamp(26px, 5vw, 56px);
@@ -801,7 +801,7 @@
       align-items: center;
       border-radius: 44px;
       padding: clamp(30px, 6vw, 64px);
-      background: linear-gradient(135deg, rgba(251,247,239,.94), rgba(255,255,255,.76));
+      background: linear-gradient(135deg, rgba(246,248,249,.94), rgba(255,255,255,.76));
       border: 1px solid rgba(32,55,95,.11);
       box-shadow: var(--shadow);
       overflow: hidden;
@@ -1226,9 +1226,10 @@
 
     .visual-grid {
       display: grid;
-      grid-template-columns: 0.85fr 1.3fr 0.85fr;
-      align-items: stretch;
-      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 340px));
+      justify-content: center;
+      align-items: center;
+      gap: clamp(20px, 4vw, 48px);
     }
 
     .visual-card {
@@ -1257,7 +1258,7 @@
       width: 100%;
       height: auto;
       aspect-ratio: 9 / 16;
-      max-height: 560px;
+      max-height: 660px;
       object-fit: cover;
       background: var(--navy-900);
     }
@@ -1281,8 +1282,8 @@
 
     .dim-photo-wrap {
       position: relative;
-      max-width: 280px;
-      margin: 26px auto 4px;
+      max-width: 330px;
+      margin: 8px auto 4px;
     }
 
     .dim-photo-wrap img {
@@ -1367,6 +1368,43 @@
       color: var(--muted);
       font-size: 12px;
       margin: 14px 0 0;
+    }
+
+    /* --- Froyo product showcase --- */
+    #product-showcase { padding: 20px 0 58px; }
+    .showcase-band {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: clamp(28px, 5vw, 64px);
+      align-items: center;
+    }
+    .showcase-media img {
+      width: 100%;
+      display: block;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+    }
+    .showcase-quote {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(28px, 3.6vw, 44px);
+      line-height: 1.22;
+      color: var(--navy);
+      margin: 0;
+      max-width: 16ch;
+    }
+    .showcase-sub {
+      margin: 18px 0 0;
+      color: var(--slate);
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    @media (max-width: 760px) {
+      .showcase-band { grid-template-columns: 1fr; }
+      .showcase-quote { max-width: none; }
     }
 
     /* --- Founder note / social proof --- */
@@ -1666,12 +1704,6 @@
               aria-label="Heli machine dispensing a cup of frozen yogurt"
             ></video>
           </div>
-          <div class="visual-card" data-reveal style="padding: 0; overflow: hidden;">
-            <picture>
-              <source srcset="assets/heli_cup_photo.webp" type="image/webp" />
-              <img class="cup-photo" src="assets/heli_cup_photo.jpg" alt="A finished cup of Heli premium Greek frozen yogurt with pistachio and matcha topping" loading="lazy" decoding="async" />
-            </picture>
-          </div>
           <div class="visual-card" data-reveal>
             <div class="dim-photo-wrap">
               <picture>
@@ -1687,6 +1719,21 @@
             </div>
             <p class="visual-footnote">38.7&quot; W × 36.6&quot; D × ~70&quot; H (height approximate)</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="product-showcase">
+      <div class="page-shell showcase-band">
+        <div class="showcase-media" data-reveal>
+          <picture>
+            <source srcset="assets/heli_cup_photo.webp" type="image/webp" />
+            <img src="assets/heli_cup_photo.jpg" alt="A finished cup of Heli premium Greek frozen yogurt with pistachio and matcha topping" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="showcase-copy" data-reveal>
+          <p class="showcase-quote">A fresh 5&nbsp;oz cup of premium Greek frozen yogurt.</p>
+          <p class="showcase-sub">No app · No cash · No line</p>
         </div>
       </div>
     </section>
