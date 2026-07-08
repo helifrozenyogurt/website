@@ -1287,11 +1287,15 @@
       gap: clamp(28px, 5vw, 60px);
       align-items: center;
     }
+    .place-photo picture { display: block; width: 100%; }
     .place-photo {
       position: relative;
     }
     .place-photo img {
       width: 100%;
+      height: auto;
+      aspect-ratio: 1122 / 1402;
+      object-fit: cover;
       display: block;
       border-radius: 22px;
       box-shadow: var(--shadow);
