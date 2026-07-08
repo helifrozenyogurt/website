@@ -1628,6 +1628,38 @@
       text-decoration: underline;
     }
 
+    .form-success {
+      text-align: center;
+      padding: 26px 8px 12px;
+    }
+    .form-success-mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--butter);
+      color: var(--navy);
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      font-weight: 700;
+      margin: 0 auto 16px;
+      box-shadow: 0 10px 24px -10px rgba(32, 55, 95, .30);
+    }
+    .form-success-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 500;
+      font-size: 34px;
+      line-height: 1.1;
+      margin: 0;
+      color: var(--navy);
+    }
+    .form-success-text {
+      margin: 10px auto 0;
+      max-width: 34ch;
+      color: var(--navy);
+      font-size: 16px;
+    }
+
     .form-status {
       margin: 12px 0 0;
       font-size: 14px;
@@ -2114,6 +2146,11 @@
             <p class="form-status" id="heliFormStatus" role="status" aria-live="polite"></p>
             <p class="form-note">Your details are emailed straight to the Heli team — no inbox app required.</p>
           </form>
+          <div class="form-success" id="heliFormSuccess" hidden>
+            <div class="form-success-mark" aria-hidden="true">✓</div>
+            <h3 class="form-success-title">Thank you.</h3>
+            <p class="form-success-text">We've got your details — we'll be in touch soon.</p>
+          </div>
         </aside>
       </div>
     </section>
@@ -2160,10 +2197,12 @@
           .then(function (r) { return r.json(); })
           .then(function () {
             form.reset();
-            if (statusEl) {
-              statusEl.className = 'form-status ok';
-              statusEl.textContent = 'Thanks \u2014 your details are on their way to the Heli team. We\u2019ll be in touch shortly.';
-            }
+            var card = form.closest('.inquiry-card');
+            var heading = card ? card.querySelector('h3') : null;
+            if (heading) { heading.hidden = true; }
+            form.hidden = true;
+            var success = document.getElementById('heliFormSuccess');
+            if (success) { success.hidden = false; success.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
           })
           .catch(function () {
             if (statusEl) {
