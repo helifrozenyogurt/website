@@ -874,6 +874,24 @@
       color: var(--navy);
     }
 
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: var(--navy);
+      border: 1px solid var(--mist);
+      transition: color .2s ease, border-color .2s ease, transform .2s ease;
+      flex-shrink: 0;
+    }
+    .social-link:hover {
+      color: var(--navy-900);
+      border-color: var(--slate);
+      transform: translateY(-2px);
+    }
+
     .footer-inner {
       display: flex;
       align-items: center;
@@ -1146,7 +1164,25 @@
         min-height: auto;
       }
 
-      .footer-inner {
+      .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: var(--navy);
+      border: 1px solid var(--mist);
+      transition: color .2s ease, border-color .2s ease, transform .2s ease;
+      flex-shrink: 0;
+    }
+    .social-link:hover {
+      color: var(--navy-900);
+      border-color: var(--slate);
+      transform: translateY(-2px);
+    }
+
+    .footer-inner {
         align-items: flex-start;
         flex-direction: column;
       }
@@ -2164,6 +2200,13 @@
       </picture>
       <span>Greek · Frozen · Yogurt</span>
       <a href="mailto:hello@helifrozenyogurt.com">hello@helifrozenyogurt.com</a>
+      <a class="social-link" href="https://instagram.com/helifroyo" target="_blank" rel="noopener" aria-label="Heli on Instagram, @helifroyo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="12" cy="12" r="4.1" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="17.3" cy="6.7" r="1.25" fill="currentColor"/>
+        </svg>
+      </a>
       <span style="color:var(--muted);font-size:11px;letter-spacing:.04em;text-transform:none;font-weight:400;opacity:.8;">Fully insured FL LLC · PCI-compliant · Sales tax registered · Contains milk</span>
     </div>
   </footer>
