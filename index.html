@@ -58,6 +58,7 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
@@ -66,6 +67,8 @@
       font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background-color: var(--stripe-white);
       line-height: 1.6;
+      overflow-x: hidden;
+      max-width: 100%;
     }
 
     /* Coastal stripe signature — the one bold motif, kept to a thin band */
@@ -100,6 +103,26 @@
       z-index: 20;
       padding: 14px 0 0;
     }
+
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .nav-cta .cta-short { display: none; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--mist);
+      background: rgba(255,255,255,.6);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .nav-toggle-bar { display: block; width: 18px; height: 2px; margin: 0 auto; background: var(--navy); border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
+    #siteHeader.nav-open .nav-toggle-bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    #siteHeader.nav-open .nav-toggle-bar:nth-child(2) { opacity: 0; }
+    #siteHeader.nav-open .nav-toggle-bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
     .nav {
       display: flex;
@@ -968,9 +991,32 @@
     }
 
     @media (max-width: 980px) {
-      .nav-links {
-        display: none;
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; }
+      #siteHeader.nav-open .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        width: min(var(--max), calc(100% - 28px));
+        margin: 0 auto;
+        background: rgba(246,248,249,.98);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--mist);
+        border-radius: 20px;
+        padding: 12px 16px;
+        box-shadow: var(--shadow);
+        z-index: 40;
       }
+      #siteHeader.nav-open .nav-links a {
+        opacity: 1;
+        padding: 12px 6px;
+        border-bottom: 1px solid var(--slate-100);
+      }
+      #siteHeader.nav-open .nav-links a:last-child { border-bottom: 0; }
 
       .hero {
         padding-top: 64px;
@@ -1182,6 +1228,16 @@
       .form-grid-3 {
         grid-template-columns: 1fr;
       }
+
+      .brand-lockup { min-width: 0; }
+      .nav-cta .cta-full { display: none; }
+      .nav-cta .cta-short { display: inline; }
+
+      h1 { font-size: clamp(30px, 8.5vw, 42px); }
+      h2 { font-size: clamp(26px, 7.2vw, 36px); }
+      .hero-copy { font-size: clamp(16px, 4.4vw, 18px); }
+      .place-intro { font-size: 16px; }
+      .section-heading { gap: 14px; margin-bottom: 24px; }
     }
 
     /* --- Trust bar --- */
@@ -1717,7 +1773,7 @@
 </head>
 <body>
   <div class="stripe-band" aria-hidden="true"></div>
-  <header class="nav-wrap">
+  <header class="nav-wrap" id="siteHeader">
     <div class="page-shell">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand-lockup" href="#top" aria-label="Heli Frozen Yogurt home">
@@ -1729,13 +1785,18 @@
             <span class="brand-subtext">Greek · Frozen · Yogurt</span>
           </div>
         </a>
-        <div class="nav-links" aria-label="Page sections">
+        <div class="nav-links" id="navLinks" aria-label="Page sections">
           <a href="#why">Why Heli</a>
           <a href="#how">How it works</a>
           <a href="#locations">Where it fits</a>
           <a href="#faq">FAQ</a>
         </div>
-        <a class="button button-primary" href="#contact-form">Bring Heli to Your Property</a>
+        <div class="nav-actions">
+          <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+            <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+          </button>
+          <a class="button button-primary nav-cta" href="#contact-form"><span class="cta-full">Bring Heli to Your Property</span><span class="cta-short">Get Heli</span></a>
+        </div>
       </nav>
     </div>
   </header>
@@ -2195,7 +2256,28 @@
 
   <script>
     (function () {
-      // Lead form: build a pre-filled email from the structured fields.
+      // Mobile nav toggle
+      var header = document.getElementById('siteHeader');
+      var navToggle = document.getElementById('navToggle');
+      var navLinks = document.getElementById('navLinks');
+      if (header && navToggle) {
+        navToggle.addEventListener('click', function () {
+          var open = header.classList.toggle('nav-open');
+          navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+        if (navLinks) {
+          navLinks.addEventListener('click', function (e) {
+            if (e.target && e.target.tagName === 'A') {
+              header.classList.remove('nav-open');
+              navToggle.setAttribute('aria-expanded', 'false');
+              navToggle.setAttribute('aria-label', 'Open menu');
+            }
+          });
+        }
+      }
+
+      // Lead form: submit directly to Heli.
       // NOTE for Lea: this ships working today with zero backend. If you'd rather
       // capture submissions directly (e.g. into a spreadsheet or inbox without
       // opening the visitor's mail client), connect a form backend such as
