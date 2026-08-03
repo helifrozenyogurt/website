@@ -1,32 +1,47 @@
 (function () {
-  var guestInput = document.getElementById('guestCountCalculator');
-  var guestRange = document.getElementById('guestRange');
-  var decreaseButton = document.getElementById('decreaseGuests');
-  var increaseButton = document.getElementById('increaseGuests');
-  var packageResult = document.getElementById('packageResult');
-  var totalResult = document.getElementById('totalResult');
-
-  if (!guestInput || !guestRange || !packageResult || !totalResult) {
-    return;
-  }
-
   var minimumGuests = 20;
   var maximumGuests = 75;
   var setupFee = 300;
   var pricePerGuest = 9;
+  var durationFees = {
+    60: 0,
+    90: 75,
+    120: 150
+  };
 
   function clampGuestCount(value) {
-    return Math.min(maximumGuests, Math.max(minimumGuests, Math.round(value)));
+    var numericValue = Number(value);
+    var safeValue = Number.isFinite(numericValue) ? numericValue : minimumGuests;
+    return Math.min(maximumGuests, Math.max(minimumGuests, Math.round(safeValue)));
   }
 
-  function packageForGuests(guestCount) {
-    if (guestCount <= 30) {
-      return 'Heli Mini · 60 minutes';
+  function recommendedDuration(guestCount) {
+    var normalizedCount = clampGuestCount(guestCount);
+
+    if (normalizedCount <= 30) {
+      return 60;
     }
-    if (guestCount <= 50) {
-      return 'Heli Celebration · 90 minutes';
+    if (normalizedCount <= 50) {
+      return 90;
     }
-    return 'Heli Signature · 2 hours';
+    return 120;
+  }
+
+  function normalizeDuration(duration, guestCount) {
+    var numericDuration = Number(duration);
+    return Object.prototype.hasOwnProperty.call(durationFees, numericDuration)
+      ? numericDuration
+      : recommendedDuration(guestCount);
+  }
+
+  function calculateTotal(guestCount, duration) {
+    var normalizedCount = clampGuestCount(guestCount);
+    var normalizedDuration = normalizeDuration(duration, normalizedCount);
+    return setupFee + (pricePerGuest * normalizedCount) + durationFees[normalizedDuration];
+  }
+
+  function durationLabel(duration) {
+    return Number(duration) === 120 ? '2 hours' : String(duration) + ' minutes';
   }
 
   function formatCurrency(value) {
@@ -37,15 +52,76 @@
     }).format(value);
   }
 
-  function render(guestCount, synchronizeInput) {
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+      calculateTotal: calculateTotal,
+      clampGuestCount: clampGuestCount,
+      recommendedDuration: recommendedDuration,
+      durationLabel: durationLabel
+    };
+  }
+
+  if (typeof document === 'undefined') {
+    return;
+  }
+
+  var guestInput = document.getElementById('guestCountCalculator');
+  var guestRange = document.getElementById('guestRange');
+  var decreaseButton = document.getElementById('decreaseGuests');
+  var increaseButton = document.getElementById('increaseGuests');
+  var durationInputs = Array.prototype.slice.call(document.querySelectorAll('input[name="serviceDuration"]'));
+  var durationRecommendation = document.getElementById('durationRecommendation');
+  var totalResult = document.getElementById('totalResult');
+  var estimateSummary = document.getElementById('estimateSummary');
+
+  if (!guestInput || !guestRange || !durationInputs.length || !totalResult || !estimateSummary) {
+    return;
+  }
+
+  var lastRecommendedDuration = null;
+
+  function selectedDuration() {
+    var checkedInput = durationInputs.find(function (input) {
+      return input.checked;
+    });
+    return checkedInput ? Number(checkedInput.value) : null;
+  }
+
+  function selectDuration(duration) {
+    durationInputs.forEach(function (input) {
+      input.checked = Number(input.value) === Number(duration);
+    });
+  }
+
+  function render(guestCount, synchronizeInput, guestCountChanged) {
     var normalizedCount = clampGuestCount(guestCount);
+    var recommended = recommendedDuration(normalizedCount);
+    var selected = selectedDuration();
+
+    if (selected === null || (guestCountChanged && (lastRecommendedDuration === null || selected === lastRecommendedDuration))) {
+      selected = recommended;
+      selectDuration(selected);
+    }
+
+    selected = normalizeDuration(selected, normalizedCount);
+    lastRecommendedDuration = recommended;
 
     if (synchronizeInput) {
       guestInput.value = String(normalizedCount);
     }
     guestRange.value = String(normalizedCount);
-    packageResult.textContent = packageForGuests(normalizedCount);
-    totalResult.textContent = formatCurrency(setupFee + (pricePerGuest * normalizedCount));
+    totalResult.textContent = formatCurrency(calculateTotal(normalizedCount, selected));
+    estimateSummary.textContent = 'Includes unlimited Heli cups for ' + normalizedCount + ' booked guests during ' + durationLabel(selected) + ' of service.';
+
+    if (durationRecommendation) {
+      if (selected < recommended) {
+        durationRecommendation.textContent = 'For a smoother guest experience, we recommend ' + durationLabel(recommended) + ' for this guest count.';
+        durationRecommendation.hidden = false;
+      } else {
+        durationRecommendation.textContent = '';
+        durationRecommendation.hidden = true;
+      }
+    }
 
     if (decreaseButton) {
       decreaseButton.disabled = normalizedCount <= minimumGuests;
@@ -57,33 +133,39 @@
 
   guestInput.addEventListener('input', function () {
     var parsedValue = Number(guestInput.value);
-    if (Number.isFinite(parsedValue)) {
-      render(parsedValue, false);
+    if (guestInput.value !== '' && Number.isFinite(parsedValue)) {
+      render(parsedValue, false, true);
     }
   });
 
   guestInput.addEventListener('change', function () {
     var parsedValue = Number(guestInput.value);
-    render(Number.isFinite(parsedValue) ? parsedValue : minimumGuests, true);
+    render(Number.isFinite(parsedValue) ? parsedValue : minimumGuests, true, true);
   });
 
   guestRange.addEventListener('input', function () {
-    render(Number(guestRange.value), true);
+    render(Number(guestRange.value), true, true);
   });
 
   if (decreaseButton) {
     decreaseButton.addEventListener('click', function () {
       var currentValue = Number(guestInput.value);
-      render((Number.isFinite(currentValue) ? currentValue : minimumGuests) - 1, true);
+      render((Number.isFinite(currentValue) ? currentValue : minimumGuests) - 1, true, true);
     });
   }
 
   if (increaseButton) {
     increaseButton.addEventListener('click', function () {
       var currentValue = Number(guestInput.value);
-      render((Number.isFinite(currentValue) ? currentValue : minimumGuests) + 1, true);
+      render((Number.isFinite(currentValue) ? currentValue : minimumGuests) + 1, true, true);
     });
   }
 
-  render(Number(guestInput.value), true);
+  durationInputs.forEach(function (input) {
+    input.addEventListener('change', function () {
+      render(Number(guestInput.value), true, false);
+    });
+  });
+
+  render(Number(guestInput.value), true, true);
 })();

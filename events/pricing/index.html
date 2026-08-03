@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Heli Event Packages &amp; Pricing | Miami Frozen Yogurt Cart</title>
-  <meta name="description" content="Explore Heli event packages for birthdays, showers, pool parties, weddings, and private celebrations in Miami, with unlimited service for booked guests." />
+  <title>Heli Event Pricing | Miami Greek Frozen Yogurt Cart</title>
+  <meta name="description" content="Heli event experiences start at $480 for 20 booked guests and 60 minutes of service, with a styled Greek frozen yogurt cart, curated toppings, and a dedicated attendant." />
   <meta name="theme-color" content="#20375F" />
   <link rel="canonical" href="https://helifrozenyogurt.com/events/pricing/" />
 
-  <meta property="og:title" content="Heli Event Packages &amp; Pricing" />
-  <meta property="og:description" content="A beautifully styled Greek frozen yogurt cart with unlimited cups for your booked guests during service. Packages begin at 60 minutes." />
+  <meta property="og:title" content="Heli Event Pricing" />
+  <meta property="og:description" content="A complete Greek frozen yogurt cart experience starting at $480 for 20 booked guests and 60 minutes of service." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://helifrozenyogurt.com/events/pricing/" />
   <meta property="og:image" content="https://helifrozenyogurt.com/events/assets/heli-mobile-cart.jpg" />
@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="../assets/heli-mobile-cart.webp" imagesrcset="../assets/heli-mobile-cart-800.webp 800w, ../assets/heli-mobile-cart.webp 1200w" imagesizes="(max-width: 720px) calc(100vw - 52px), (max-width: 980px) 584px, 540px" fetchpriority="high" />
+  <link rel="preload" as="image" href="../assets/heli-mobile-cart.webp" imagesrcset="../assets/heli-mobile-cart-800.webp 800w, ../assets/heli-mobile-cart.webp 1200w" imagesizes="(max-width: 720px) calc(100vw - 52px), (max-width: 980px) 560px, 620px" fetchpriority="high" />
   <link rel="stylesheet" href="../styles.css" />
   <link rel="stylesheet" href="styles.css" />
 
@@ -55,7 +55,7 @@
           "@type": "Offer",
           "priceCurrency": "USD",
           "price": "480",
-          "description": "Starting event total for 20 guests."
+          "description": "Starting event total for 20 confirmed guests and 60 minutes of service."
         }
       },
       {
@@ -63,13 +63,18 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What does unlimited service mean?",
-            "acceptedAnswer": {"@type": "Answer", "text": "All guests included in the booked guest count may enjoy unlimited Heli cups during the selected service window."}
+            "name": "How does Heli event pricing work?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Events start at $480 for 20 confirmed guests and 60 minutes of service. Every event includes a one-time $300 cart setup and service charge plus $9 for each confirmed guest. Extend service to 90 minutes for $75 or to two hours for $150."}
           },
           {
             "@type": "Question",
-            "name": "Can I extend the service time?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Yes, additional service time is available in 30-minute increments and is subject to availability and venue logistics."}
+            "name": "What does unlimited service mean?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Unlimited Heli cups are available to the confirmed guest count during the booked service window while active event service is taking place."}
+          },
+          {
+            "@type": "Question",
+            "name": "How does the final guest count affect pricing?",
+            "acceptedAnswer": {"@type": "Answer", "text": "The event-size cards show starting totals. The final quote adjusts to the confirmed guest count and selected service window."}
           },
           {
             "@type": "Question",
@@ -106,7 +111,7 @@
 
         <div class="nav-links" id="navLinks">
           <a href="../index.html">The Experience</a>
-          <a href="#packages">Packages</a>
+          <a href="#event-sizes">Event Sizes</a>
           <a href="#included">What’s Included</a>
           <a href="#faq">FAQ</a>
         </div>
@@ -123,115 +128,121 @@
 
   <main id="main" tabindex="-1">
     <section class="pricing-hero" aria-labelledby="pricing-title">
-      <div class="page-shell pricing-hero-grid">
-        <div class="pricing-hero-copy">
-          <div class="eyebrow"><span class="eyebrow-dot"></span> Simple Event Pricing</div>
-          <h1 id="pricing-title">One beautiful cart. <em>Unlimited delight.</em></h1>
-          <p class="hero-copy">Choose the service window that fits your celebration. Your booked guests can enjoy unlimited Heli cups during service, complete with Greek frozen yogurt and a curated topping bar.</p>
+      <div class="page-shell pricing-hero-stage">
+        <div class="pricing-hero-copy" data-reveal>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Heli Events</div>
+          <h1 id="pricing-title">A beautifully served Greek frozen yogurt experience, <em>starting at $480.</em></h1>
+          <p class="hero-copy">Unlimited Heli cups for your booked guests, a styled mobile cart, curated toppings, and dedicated service for your celebration.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#packages" data-cta="pricing-hero">Explore Packages</a>
-            <a class="button button-secondary" href="../index.html#availability">Check Your Date</a>
+            <a class="button button-primary" href="#event-sizes" data-cta="pricing-hero">Find Your Event Size</a>
+            <a class="button button-secondary" href="../index.html#availability">Check Availability</a>
           </div>
-          <p class="hero-microcopy">20-guest minimum · Miami-Dade delivery included · Fully staffed service</p>
+          <p class="hero-microcopy">20-guest minimum · 60 minutes included · Miami-Dade delivery</p>
         </div>
 
-        <div class="pricing-hero-media" data-reveal>
+        <figure class="pricing-hero-media" data-reveal>
           <picture>
-            <source srcset="../assets/heli-mobile-cart-800.webp 800w, ../assets/heli-mobile-cart.webp 1200w" sizes="(max-width: 720px) calc(100vw - 52px), (max-width: 980px) 584px, 540px" type="image/webp" />
+            <source srcset="../assets/heli-mobile-cart-800.webp 800w, ../assets/heli-mobile-cart.webp 1200w" sizes="(max-width: 720px) calc(100vw - 52px), (max-width: 980px) 560px, 620px" type="image/webp" />
             <img src="../assets/heli-mobile-cart.jpg" alt="Heli event cart with a striped umbrella, branded white front, flowers, cups, toppings, and sauces" width="1200" height="1500" fetchpriority="high" decoding="async" />
           </picture>
-        </div>
+        </figure>
       </div>
     </section>
 
     <section class="promise-strip" aria-label="Heli service promise">
       <div class="page-shell promise-strip-inner" data-reveal>
-        <div><strong>Unlimited Heli cups</strong><span>during your service window</span></div>
+        <div><strong>Unlimited Heli cups</strong><span>for booked guests during the selected service window</span></div>
         <div><strong>Six curated toppings</strong><span>three sauces and three dry toppings</span></div>
-        <div><strong>Easy for the host</strong><span>we set up, serve, and clean up</span></div>
+        <div><strong>Dedicated service</strong><span>we set up, serve, and clean up</span></div>
       </div>
     </section>
 
-    <section id="packages">
-      <div class="page-shell section-card packages-section">
+    <section id="event-sizes">
+      <div class="page-shell section-card event-sizes-section">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">Choose Your Celebration</p>
-            <h2>Three service windows, one unforgettable treat.</h2>
+            <p class="section-kicker">Find Your Event Size</p>
+            <h2>A Heli experience designed around your guest list.</h2>
           </div>
-          <p class="section-intro">Every package includes the complete Heli cart experience. Pricing is $300 for event setup plus $9 per guest, with a 20-guest minimum.</p>
+          <p class="section-intro">Every option includes the complete Heli cart experience. Your final total adjusts to your confirmed guest count.</p>
         </div>
 
-        <div class="package-grid">
-          <article class="package-card" data-reveal>
-            <div class="package-topline"><span>Heli Mini</span><span>01</span></div>
-            <h3>60 minutes</h3>
-            <p class="package-for">Best for 20 to 30 guests</p>
-            <p class="package-description">An intimate frozen yogurt moment for birthdays, showers, brunches, and smaller celebrations.</p>
-            <div class="package-example">
-              <span>Example for 25 guests</span>
-              <strong>$525</strong>
-            </div>
-            <a class="package-link" href="../index.html#availability">Check your date <span aria-hidden="true">→</span></a>
+        <div class="event-size-grid">
+          <article class="event-size-card" data-reveal>
+            <h3>Intimate Celebrations</h3>
+            <p class="event-size-guests">20 to 30 guests</p>
+            <p class="event-size-price"><span>Starting at</span><strong>$480</strong></p>
+            <p class="event-size-duration">60 minutes included</p>
+            <p class="event-size-description">Perfect for birthdays, showers, brunches, and smaller private celebrations.</p>
           </article>
 
-          <article class="package-card package-card-featured" data-reveal>
-            <div class="popular-badge">Most Popular</div>
-            <div class="package-topline"><span>Heli Celebration</span><span>02</span></div>
-            <h3>90 minutes</h3>
-            <p class="package-for">Best for 31 to 50 guests</p>
-            <p class="package-description">A relaxed, guest-friendly service window for pool parties, milestone birthdays, and private events.</p>
-            <div class="package-example">
-              <span>Example for 50 guests</span>
-              <strong>$750</strong>
-            </div>
-            <a class="package-link" href="../index.html#availability">Check your date <span aria-hidden="true">→</span></a>
+          <article class="event-size-card" data-reveal>
+            <h3>Classic Gatherings</h3>
+            <p class="event-size-guests">31 to 50 guests</p>
+            <p class="event-size-price"><span>Starting at</span><strong>$654</strong></p>
+            <p class="event-size-duration">90 minutes recommended</p>
+            <p class="event-size-description">Ideal for pool parties, milestone celebrations, and relaxed private events.</p>
           </article>
 
-          <article class="package-card" data-reveal>
-            <div class="package-topline"><span>Heli Signature</span><span>03</span></div>
-            <h3>2 hours</h3>
-            <p class="package-for">Best for 51 to 75 guests</p>
-            <p class="package-description">A longer, polished service for weddings, larger celebrations, resident events, and brand gatherings.</p>
-            <div class="package-example">
-              <span>Example for 75 guests</span>
-              <strong>$975</strong>
-            </div>
-            <a class="package-link" href="../index.html#availability">Check your date <span aria-hidden="true">→</span></a>
+          <article class="event-size-card" data-reveal>
+            <h3>Larger Celebrations</h3>
+            <p class="event-size-guests">51 to 75 guests</p>
+            <p class="event-size-price"><span>Starting at</span><strong>$909</strong></p>
+            <p class="event-size-duration">2 hours recommended</p>
+            <p class="event-size-description">Designed for weddings, corporate gatherings, brand events, and larger celebrations.</p>
           </article>
         </div>
 
-        <p class="package-note">Need a longer service window or more than 75 guests? We can prepare a custom event plan.</p>
+        <div class="event-size-footer">
+          <p>Final pricing adjusts to your confirmed guest count and selected service window. Planning for more than 75 guests? Contact us for a custom event plan.</p>
+          <a class="button button-primary" href="#calculator">Estimate Your Event</a>
+        </div>
       </div>
     </section>
 
-    <section class="calculator-section" aria-labelledby="calculator-title">
+    <section class="calculator-section" id="calculator" aria-labelledby="calculator-title">
       <div class="page-shell calculator-card">
         <div class="calculator-copy">
           <p class="section-kicker">Plan Your Budget</p>
           <h2 id="calculator-title">See your estimated event total.</h2>
-          <p>Choose your guest count and we will match it to the ideal service window and show your estimated total.</p>
+          <p>Choose your confirmed guest count and service duration to see a tailored estimate for your celebration.</p>
         </div>
 
         <div class="calculator-panel" data-reveal>
-          <label for="guestCountCalculator">How many guests are you expecting?</label>
-          <div class="guest-control">
-            <button type="button" class="guest-button" id="decreaseGuests" aria-label="Decrease guest count">−</button>
-            <div><input id="guestCountCalculator" type="number" min="20" max="75" step="1" value="25" inputmode="numeric" aria-describedby="guestHelp" /><span>guests</span></div>
-            <button type="button" class="guest-button" id="increaseGuests" aria-label="Increase guest count">+</button>
+          <div class="calculator-field">
+            <label for="guestCountCalculator">Guest count</label>
+            <div class="guest-control">
+              <button type="button" class="guest-button" id="decreaseGuests" aria-label="Decrease guest count">−</button>
+              <div><input id="guestCountCalculator" type="number" min="20" max="75" step="1" value="20" inputmode="numeric" aria-describedby="guestHelp" /><span>guests</span></div>
+              <button type="button" class="guest-button" id="increaseGuests" aria-label="Increase guest count">+</button>
+            </div>
+            <input class="guest-range" id="guestRange" type="range" min="20" max="75" step="1" value="20" aria-label="Guest count slider" />
+            <p class="calculator-help" id="guestHelp">20 guest minimum. For events larger than 75 guests, request a custom event plan.</p>
           </div>
-          <input class="guest-range" id="guestRange" type="range" min="20" max="75" step="1" value="25" aria-label="Guest count slider" />
-          <p class="calculator-help" id="guestHelp">For events larger than 75 guests, request a custom quote.</p>
+
+          <fieldset class="duration-fieldset">
+            <legend>Service duration</legend>
+            <div class="duration-options">
+              <label class="duration-option">
+                <input type="radio" name="serviceDuration" value="60" checked />
+                <span><strong>60 minutes</strong><small>Included</small></span>
+              </label>
+              <label class="duration-option">
+                <input type="radio" name="serviceDuration" value="90" />
+                <span><strong>90 minutes</strong><small>+ $75</small></span>
+              </label>
+              <label class="duration-option">
+                <input type="radio" name="serviceDuration" value="120" />
+                <span><strong>2 hours</strong><small>+ $150</small></span>
+              </label>
+            </div>
+          </fieldset>
+          <p class="duration-recommendation" id="durationRecommendation" role="status" aria-live="polite" hidden></p>
 
           <div class="estimate-result" aria-live="polite">
-            <div>
-              <span>Recommended</span>
-              <strong id="packageResult">Heli Mini · 60 minutes</strong>
-            </div>
-            <div class="estimate-total">
-              <span>Estimated total</span>
-              <strong id="totalResult">$525</strong>
-            </div>
+            <span class="estimate-label">Estimated event total</span>
+            <strong id="totalResult">$480</strong>
+            <p id="estimateSummary">Includes unlimited Heli cups for 20 booked guests during 60 minutes of service.</p>
           </div>
           <a class="button button-primary" href="../index.html#availability" data-cta="pricing-mid">Check Availability</a>
           <p class="estimate-disclaimer">Estimate excludes applicable taxes and optional add-ons. Your final quote confirms venue access, date, and event details.</p>
@@ -246,8 +257,8 @@
           <h2>Everything your guests need, beautifully served.</h2>
           <p class="section-intro">We arrive with the experience planned, styled, and ready to serve so you can stay present with your guests.</p>
           <div class="included-callout">
-            <strong>Unlimited during service</strong>
-            <span>Booked guests are welcome to enjoy another cup during your selected service window.</span>
+            <strong>Unlimited during active service</strong>
+            <span>Unlimited Heli cups for your booked guests during the selected service window.</span>
           </div>
         </div>
 
@@ -255,14 +266,14 @@
           <ul>
             <li>Heli mobile cart and umbrella</li>
             <li>Greek frozen yogurt</li>
-            <li>Six toppings and sauces</li>
+            <li>Six curated toppings and sauces</li>
             <li>Heli cups, spoons, and napkins</li>
-            <li>Friendly Heli event attendant</li>
-            <li>Menu or “Build Your Bowl” sign</li>
+            <li>Dedicated Heli attendant</li>
+            <li>Menu signage</li>
             <li>Miami-Dade delivery and setup</li>
             <li>Service, cleanup, and breakdown</li>
           </ul>
-          <p class="included-note">Unlimited service applies to the booked guest count and selected service window. Final menu selections are confirmed before the event.</p>
+          <p class="included-note">Unlimited service applies only to the confirmed guest count, during the booked service window, while active event service is taking place.</p>
         </div>
       </div>
     </section>
@@ -277,7 +288,8 @@
           <p class="section-intro">Keep the experience simple or add the finishing touches that fit your celebration.</p>
         </div>
         <div class="addon-grid">
-          <article data-reveal><span>Extra service time</span><strong>+$75 / 30 min</strong></article>
+          <article data-reveal><span>Additional confirmed guests</span><strong>+$9 each</strong></article>
+          <article data-reveal><span>Additional service time</span><strong>+$75 per 30 minutes</strong></article>
           <article data-reveal><span>Select Broward locations</span><strong>+$50 travel</strong></article>
           <article data-reveal><span>Custom event sign</span><strong>From $50</strong></article>
         </div>
@@ -296,12 +308,28 @@
 
         <div class="faq-list">
           <details class="faq-item" data-reveal>
-            <summary class="faq-question">What does “unlimited” mean? <span class="faq-icon">+</span></summary>
-            <p class="faq-answer">Every guest included in your booked guest count may enjoy unlimited Heli cups during your selected service window. The offer ends when the scheduled service time concludes.</p>
+            <summary class="faq-question">How does Heli event pricing work? <span class="faq-icon">+</span></summary>
+            <div class="faq-answer">
+              <p>Events start at $480 for 20 confirmed guests and 60 minutes of service. Every Heli event includes a one-time $300 cart setup and service charge, plus $9 for each confirmed guest. Sixty minutes of service are included. Extend the experience to 90 minutes for $75 or to two hours for $150.</p>
+              <p>The one-time event setup includes:</p>
+              <ul class="pricing-setup-list">
+                <li>Miami-Dade delivery</li>
+                <li>Heli cart and umbrella</li>
+                <li>Event setup</li>
+                <li>Heli attendant</li>
+                <li>Service coordination</li>
+                <li>Cleanup</li>
+                <li>Breakdown</li>
+              </ul>
+            </div>
           </details>
           <details class="faq-item" data-reveal>
-            <summary class="faq-question">Can I extend the service time? <span class="faq-icon">+</span></summary>
-            <p class="faq-answer">Yes, additional service time is $75 per 30 minutes and is subject to availability and venue logistics.</p>
+            <summary class="faq-question">What does “unlimited” mean? <span class="faq-icon">+</span></summary>
+            <p class="faq-answer">Unlimited Heli cups are available to your confirmed guest count during the booked service window while active event service is taking place. Service ends when the selected window concludes.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary class="faq-question">How does the final guest count affect pricing? <span class="faq-icon">+</span></summary>
+            <p class="faq-answer">The event-size cards show starting totals. Your final quote adjusts to your confirmed guest count and selected service window, along with any travel or optional event details.</p>
           </details>
           <details class="faq-item" data-reveal>
             <summary class="faq-question">What if I have more than 75 guests? <span class="faq-icon">+</span></summary>
