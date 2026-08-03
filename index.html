@@ -957,11 +957,11 @@
     }
 
     .footer-tagline {
-      max-width: 150px;
       font-size: 10px;
       letter-spacing: .06em;
       text-transform: uppercase;
       font-weight: 600;
+      white-space: nowrap;
     }
 
     .footer-logo {
@@ -1749,6 +1749,10 @@
       margin-top: 4px;
     }
 
+    .lead-form > .button[type="submit"] {
+      margin-top: 8px;
+    }
+
     .form-row {
       display: grid;
       gap: 6px;
@@ -1901,6 +1905,10 @@
       background: rgba(255, 255, 255, .82);
       border: 1px solid rgba(32, 55, 95, .1);
       box-shadow: 0 22px 54px -34px rgba(32, 55, 95, .42);
+    }
+
+    .feedback-form form > .button[type="submit"] {
+      margin-top: 18px;
     }
 
     .rating-fieldset {
