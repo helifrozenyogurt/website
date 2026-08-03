@@ -12,7 +12,9 @@
   <meta property="og:description" content="A beautifully styled Greek frozen yogurt cart with unlimited cups for your booked guests during service. Packages begin at 60 minutes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://helifrozenyogurt.com/events/pricing/" />
-  <meta property="og:image" content="https://helifrozenyogurt.com/events/assets/heli-mobile-cart.webp" />
+  <meta property="og:image" content="https://helifrozenyogurt.com/events/assets/heli-mobile-cart.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1500" />
   <meta property="og:image:alt" content="The Heli Greek frozen yogurt mobile cart styled for a Miami event" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -81,6 +83,7 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="stripe-band" aria-hidden="true"></div>
 
   <header class="nav-wrap" id="siteHeader">
@@ -107,13 +110,13 @@
           <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
             <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
           </button>
-          <a class="button button-primary nav-cta" href="../index.html#availability"><span class="cta-full">Check Availability</span><span class="cta-short">Book Heli</span></a>
+          <a class="button button-primary nav-cta" href="../index.html#availability" data-cta="nav"><span class="cta-full">Check Availability</span><span class="cta-short">Book Heli</span></a>
         </div>
       </nav>
     </div>
   </header>
 
-  <main id="top">
+  <main id="main" tabindex="-1">
     <section class="pricing-hero" aria-labelledby="pricing-title">
       <div class="page-shell pricing-hero-grid">
         <div class="pricing-hero-copy">
@@ -121,7 +124,7 @@
           <h1 id="pricing-title">One beautiful cart. <em>Unlimited delight.</em></h1>
           <p class="hero-copy">Choose the service window that fits your celebration. Your booked guests can enjoy unlimited Heli cups during service, complete with Greek frozen yogurt and a curated topping bar.</p>
           <div class="hero-actions">
-            <a class="button button-butter" href="#packages">Explore Packages</a>
+            <a class="button button-primary" href="#packages" data-cta="pricing-hero">Explore Packages</a>
             <a class="button button-secondary" href="../index.html#availability">Check Your Date</a>
           </div>
           <p class="hero-microcopy">20-guest minimum · Miami-Dade delivery included · Fully staffed service</p>
@@ -234,7 +237,7 @@
               <strong id="totalResult">$525</strong>
             </div>
           </div>
-          <a class="button button-primary" href="../index.html#availability">Check Availability</a>
+          <a class="button button-primary" href="../index.html#availability" data-cta="pricing-mid">Check Availability</a>
           <p class="estimate-disclaimer">Estimate excludes applicable taxes and optional add-ons. Your final quote confirms venue access, date, and event details.</p>
         </div>
       </div>
@@ -347,7 +350,7 @@
         <p class="section-kicker">A Little Greece, Brought to Your Celebration</p>
         <h2>Pick the date. Invite your people. We’ll bring the sweetest part.</h2>
         <p>Tell us your guest count and venue area to receive availability and a final event quote.</p>
-        <a class="button button-butter" href="../index.html#availability">Start Your Event Inquiry</a>
+        <a class="button button-primary" href="../index.html#availability" data-cta="pricing-closing">Start Your Event Inquiry</a>
       </div>
     </section>
   </main>
@@ -375,6 +378,7 @@
     </div>
   </footer>
 
+  <script src="../analytics.js"></script>
   <script src="../script.js"></script>
   <script src="script.js"></script>
 </body>

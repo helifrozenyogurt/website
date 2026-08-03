@@ -12,7 +12,9 @@
   <meta property="og:description" content="A beautifully styled Greek frozen yogurt cart experience for weddings, celebrations, corporate gatherings, and brand events in Miami." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://helifrozenyogurt.com/events/" />
-  <meta property="og:image" content="https://helifrozenyogurt.com/events/assets/heli-mobile-cart.webp" />
+  <meta property="og:image" content="https://helifrozenyogurt.com/events/assets/heli-mobile-cart.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1500" />
   <meta property="og:image:alt" content="The Heli Greek frozen yogurt mobile cart styled for an outdoor event" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -84,6 +86,7 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="stripe-band" aria-hidden="true"></div>
 
   <header class="nav-wrap" id="siteHeader">
@@ -112,13 +115,13 @@
           <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
             <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
           </button>
-          <a class="button button-primary nav-cta" href="#availability"><span class="cta-full">Check Availability</span><span class="cta-short">Book Heli</span></a>
+          <a class="button button-primary nav-cta" href="#availability" data-cta="nav"><span class="cta-full">Check Availability</span><span class="cta-short">Book Heli</span></a>
         </div>
       </nav>
     </div>
   </header>
 
-  <main id="top">
+  <main id="main" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
       <div class="page-shell hero-grid">
         <div class="hero-content">
@@ -126,10 +129,11 @@
           <h1 id="hero-title">Greek frozen yogurt, <em>served beautifully</em> at your event.</h1>
           <p class="hero-copy">A polished mobile cart experience for weddings, birthdays, showers, corporate gatherings, resident events, and brand activations across Miami and select South Florida locations.</p>
           <div class="hero-actions">
-            <a class="button button-butter" href="#availability">Check Availability</a>
-            <a class="button button-secondary" href="pricing/index.html">View Packages &amp; Pricing</a>
+            <a class="button button-primary" href="#availability" data-cta="hero">Check Availability</a>
+            <a class="button button-secondary" href="pricing/index.html" data-cta="hero-pricing">View Packages &amp; Pricing</a>
           </div>
           <p class="hero-microcopy">Styled cart · Greek frozen yogurt · Curated toppings · Event-ready service</p>
+          <p class="hero-price-anchor">Events start at <strong>$300 setup + $9 per guest</strong> · 20 guest minimum · <a href="pricing/index.html" data-cta="hero-price-anchor">See full pricing</a></p>
           <div class="hero-proof" aria-label="Heli event highlights">
             <span class="proof-chip">Miami event service</span>
             <span class="proof-chip">Customizable details</span>
@@ -383,8 +387,9 @@
                 </select>
               </div>
               <div class="form-row">
-                <label for="eventDate">Event date or estimated date</label>
-                <input type="text" id="eventDate" name="eventDate" placeholder="MM/DD/YYYY or estimated month" required />
+                <label for="eventDate">Event date</label>
+                <input type="date" id="eventDate" name="eventDate" required />
+                <p class="field-hint">Not locked in yet? Give us your best estimate.</p>
               </div>
             </div>
 
@@ -429,15 +434,15 @@
             </div>
 
             <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot" />
-            <button type="submit" class="button button-primary">Check Availability</button>
+            <button type="submit" class="button button-primary" data-cta="form-submit">Request Availability</button>
             <p class="form-status" id="heliEventStatus" role="status" aria-live="polite"></p>
-            <p class="form-note">Submitting this form does not create a booking or commitment.</p>
+            <p class="form-note">No commitment — we’ll confirm availability and send a tailored quote <strong>within one business day</strong>.</p>
           </form>
 
           <div class="form-success" id="heliEventSuccess" hidden>
             <div class="form-success-mark" aria-hidden="true">✓</div>
             <h3 class="form-success-title">Thank you.</h3>
-            <p class="form-success-text">We received your event details and will be in touch about availability.</p>
+            <p class="form-success-text">We received your event details and will reply with availability and a tailored quote within one business day. If it’s urgent, email <a href="mailto:hello@helifrozenyogurt.com">hello@helifrozenyogurt.com</a>.</p>
           </div>
         </aside>
       </div>
@@ -477,6 +482,7 @@
     </div>
   </footer>
 
+  <script src="analytics.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
