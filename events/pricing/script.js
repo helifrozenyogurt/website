@@ -138,10 +138,13 @@
     }
   });
 
-  guestInput.addEventListener('change', function () {
+  function commitGuestInput() {
     var parsedValue = Number(guestInput.value);
     render(Number.isFinite(parsedValue) ? parsedValue : minimumGuests, true, true);
-  });
+  }
+
+  guestInput.addEventListener('change', commitGuestInput);
+  guestInput.addEventListener('blur', commitGuestInput);
 
   guestRange.addEventListener('input', function () {
     render(Number(guestRange.value), true, true);
