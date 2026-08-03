@@ -1,726 +1,589 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claim Your Free Heli Cup - Residents' Day</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Tailwind utility replacements */
-        body { background-color: #ffffff; }
-        .text-center { text-align: center; }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
-        .px-4 { padding-left: 1rem; padding-right: 1rem; }
-        @media (min-width: 640px) {
-            .sm-py-24 { padding-top: 6rem; padding-bottom: 6rem; }
-            .sm-px-0  { padding-left: 0; padding-right: 0; }
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heli Feedback | Gio Midtown</title>
+  <meta name="description" content="Share feedback about your Heli Greek frozen yogurt experience at Gio Midtown and tell us which toppings you would like to see next." />
+  <meta name="theme-color" content="#20375F" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #20375F;
+      --navy-deep: #172945;
+      --stripe-white: #F6F8F9;
+      --ice: #EAF3FB;
+      --powder: #DEEEFD;
+      --soft-blue: #DBEDFD;
+      --mist: #D9E1EA;
+      --slate: #5F759C;
+      --butter: #F2DE8A;
+      --white: #FFFFFF;
+      --shadow: 0 24px 60px -34px rgba(32, 55, 95, .42);
+    }
 
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        h1, h2, h3, .heading {
-            font-family: 'Cormorant Garamond', serif;
-        }
+    html {
+      min-height: 100%;
+      background: var(--stripe-white);
+    }
 
-        .striped-bg {
-            background-image: url('striped-bg.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: repeat;
-        }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--navy);
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(242, 222, 138, .26), transparent 25%),
+        radial-gradient(circle at 92% 12%, rgba(222, 238, 253, .95), transparent 30%),
+        linear-gradient(180deg, var(--stripe-white), #FFFFFF 72%);
+      line-height: 1.6;
+    }
 
-        .btn-primary {
-            background-color: #1e3a4c;
-            color: white;
-            padding: 18px 40px;
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-            width: 100%;
-            max-width: 100%;
-        }
+    .stripe-band {
+      width: 100%;
+      height: 9px;
+      background: repeating-linear-gradient(90deg, var(--powder) 0 8px, var(--stripe-white) 8px 20px);
+    }
 
-        .btn-primary:hover {
-            background-color: #2a4f63;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(30, 58, 76, 0.3);
-        }
+    .page-shell {
+      width: min(760px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: clamp(34px, 6vw, 72px) 0 40px;
+    }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: #1e3a4c;
-            padding: 14px 32px;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 2px solid #1e3a4c;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 4px;
-            width: 100%;
-        }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
-        .btn-secondary:hover {
-            background-color: #1e3a4c;
-            color: white;
-        }
+    .brand img {
+      display: block;
+      width: 142px;
+      height: auto;
+    }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 50;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.3s;
-        }
+    .brand-line {
+      margin-top: 4px;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .23em;
+      text-transform: uppercase;
+    }
 
-        .modal.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      margin: 34px 0 13px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--butter);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    h1,
+    h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 500;
+      line-height: .98;
+    }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    h1 {
+      max-width: 650px;
+      margin: 0;
+      font-size: clamp(46px, 8vw, 72px);
+      letter-spacing: -.025em;
+    }
 
-        @keyframes popIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
+    .intro {
+      max-width: 580px;
+      margin: 20px auto 0;
+      color: var(--slate);
+      font-size: 15px;
+    }
 
-        .modal-content {
-            background-color: white;
-            padding: 40px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.4s ease-out;
-        }
+    .form-card {
+      margin-top: clamp(30px, 5vw, 46px);
+      padding: clamp(24px, 5vw, 44px);
+      border: 1px solid rgba(32, 55, 95, .11);
+      border-radius: 32px;
+      background: rgba(255, 255, 255, .9);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
 
-        .thank-you-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: none !important;
-        }
+    fieldset {
+      min-width: 0;
+      margin: 0 0 28px;
+      padding: 0;
+      border: 0;
+    }
 
-        .thank-you-popup.show {
-            display: flex !important;
-        }
+    legend,
+    .field-label {
+      display: block;
+      width: 100%;
+      margin-bottom: 11px;
+      color: var(--navy-deep);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .045em;
+    }
 
-        .thank-you-card {
-            background: linear-gradient(135deg, #1e3a4c 0%, #2a4f63 100%);
-            color: white;
-            padding: 50px;
-            border-radius: 16px;
-            text-align: center;
-            max-width: 400px;
-            box-shadow: 0 30px 80px rgba(30, 58, 76, 0.4);
-        }
+    .optional {
+      color: var(--slate);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
 
-        .thank-you-card h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: white;
-        }
+    .rating-options {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
 
-        .thank-you-card p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
+    .choice {
+      position: relative;
+      cursor: pointer;
+    }
 
-        .thank-you-emoji {
-            font-size: 60px;
-            margin: 20px 0;
-            display: block;
-        }
+    .choice input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+    .choice span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border: 1px solid var(--mist);
+      border-radius: 14px;
+      color: var(--navy);
+      background: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      transition: border-color .18s ease, background .18s ease, color .18s ease, transform .18s ease;
+    }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #1e3a4c;
-            font-size: 14px;
-        }
+    .choice:hover span {
+      border-color: var(--navy);
+      transform: translateY(-1px);
+    }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
+    .choice input:focus-visible + span {
+      outline: 3px solid rgba(32, 55, 95, .2);
+      outline-offset: 2px;
+    }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #1e3a4c;
-            box-shadow: 0 0 0 3px rgba(30, 58, 76, 0.1);
-        }
+    .choice input:checked + span {
+      border-color: var(--navy);
+      color: var(--white);
+      background: var(--navy);
+    }
 
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
+    .rating-guide {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 7px;
+      color: var(--slate);
+      font-size: 10px;
+    }
 
-        .checkbox-group input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-top: 2px;
-            cursor: pointer;
-        }
+    .topping-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+    }
 
-        .checkbox-group label {
-            margin: 0;
-            font-size: 13px;
-            line-height: 1.5;
-            cursor: pointer;
-        }
+    .topping-options .choice span {
+      justify-content: flex-start;
+      min-height: 44px;
+      padding: 10px 13px;
+      font-size: 12px;
+      font-weight: 500;
+    }
 
-        .star-rating {
-            display: flex;
-            gap: 15px;
-            font-size: 40px;
-            margin: 20px 0;
-        }
+    .selection-options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+    }
 
-        .star-rating input {
-            display: none;
-        }
+    .selection-options .choice span {
+      min-height: 58px;
+      padding: 9px;
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.3;
+    }
 
-        .star-rating label {
-            cursor: pointer;
-            color: #ccc;
-            transition: color 0.2s;
-            margin: 0;
-        }
+    .field {
+      margin-bottom: 25px;
+    }
 
-        .star-rating label:hover,
-        .star-rating input:checked + label {
-            color: #ffc107;
-        }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      border: 1px solid var(--mist);
+      border-radius: 14px;
+      padding: 13px 15px;
+      color: var(--navy-deep);
+      background: var(--white);
+      font: inherit;
+      font-size: 14px;
+      transition: border-color .18s ease, box-shadow .18s ease;
+    }
 
-        .modal-close {
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            color: #aaa;
-            cursor: pointer;
-            border: none;
-            background: none;
-            padding: 0;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    input[type="text"],
+    input[type="email"] {
+      min-height: 50px;
+    }
 
-        .modal-close:hover {
-            color: #000;
-        }
+    textarea {
+      min-height: 116px;
+      resize: vertical;
+    }
 
-        .modal-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            color: #1e3a4c;
-            margin: 0 0 20px 0;
-            clear: both;
-        }
+    input:focus,
+    textarea:focus {
+      border-color: var(--navy);
+      outline: 0;
+      box-shadow: 0 0 0 3px rgba(32, 55, 95, .11);
+    }
 
-        .button-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 30px;
-        }
+    ::placeholder {
+      color: #8797B2;
+      opacity: 1;
+    }
 
-        .button-group.full {
-            grid-template-columns: 1fr;
-        }
+    .submit-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 52px;
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 22px;
+      color: var(--white);
+      background: var(--navy);
+      box-shadow: 0 14px 34px rgba(32, 55, 95, .2);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+    }
 
-        @media (max-width: 640px) {
-            .button-group {
-                grid-template-columns: 1fr;
-            }
+    .submit-button:hover {
+      background: var(--navy-deep);
+      box-shadow: 0 18px 38px rgba(32, 55, 95, .25);
+      transform: translateY(-1px);
+    }
 
-            .modal-content {
-                padding: 30px 20px;
-                width: 95%;
-            }
+    .submit-button:disabled {
+      cursor: wait;
+      opacity: .7;
+      transform: none;
+    }
 
-            .thank-you-card {
-                padding: 20px 16px !important;
-                max-width: 85vw !important;
-                width: 85vw;
-            }
+    .form-note,
+    .form-status {
+      margin: 12px 0 0;
+      text-align: center;
+      color: var(--slate);
+      font-size: 11px;
+    }
 
-            .thank-you-card h2 {
-                font-size: 26px !important;
-                margin-bottom: 12px !important;
-            }
+    .form-status {
+      min-height: 18px;
+    }
 
-            .thank-you-card p {
-                font-size: 13px !important;
-                line-height: 1.4 !important;
-                margin-bottom: 10px !important;
-            }
+    .form-status.error {
+      color: #9A3346;
+    }
 
-            .thank-you-emoji {
-                font-size: 44px !important;
-                margin: 10px 0 !important;
-            }
+    .success {
+      padding: 28px 10px;
+      text-align: center;
+    }
 
-            .thank-you-card .button-group {
-                margin-top: 15px !important;
-                gap: 8px !important;
-            }
+    .success-mark {
+      display: grid;
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      place-items: center;
+      color: var(--navy);
+      background: var(--butter);
+      font-size: 24px;
+      font-weight: 700;
+    }
 
-            .thank-you-card .btn-secondary {
-                padding: 10px 16px !important;
-                font-size: 11px !important;
-            }
-        }
+    .success h2 {
+      margin: 0 0 10px;
+      font-size: 42px;
+    }
 
-        .hero-heading {
-            font-size: 42px;
-            color: #1e3a4c;
-            font-weight: 400;
-            line-height: 1.2;
-            font-family: 'Cormorant Garamond', serif;
-        }
+    .success p {
+      max-width: 450px;
+      margin: 0 auto;
+      color: var(--slate);
+      font-size: 14px;
+    }
 
-        .subheading {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
+    .support {
+      margin: 24px 0 0;
+      text-align: center;
+      color: var(--slate);
+      font-size: 11px;
+    }
 
-        .highlight {
-            color: #8b6f47;
-            font-weight: 600;
-        }
+    .support a {
+      color: var(--navy);
+      font-weight: 600;
+      text-underline-offset: 3px;
+    }
 
-        .restrictions {
-            background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-size: 13px;
-            color: #555;
-            line-height: 1.6;
-        }
+    [hidden] {
+      display: none !important;
+    }
 
-        .restrictions strong {
-            color: #1e3a4c;
-        }
+    @media (max-width: 600px) {
+      .page-shell {
+        width: min(100% - 22px, 760px);
+        padding-top: 30px;
+      }
 
-        .content-box {
-            background-color: #f9f7f3;
-            border-radius: 16px;
-            padding: 30px 40px 50px 40px;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
+      .brand img {
+        width: 126px;
+      }
 
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: -10px;
-            width: 100%;
-        }
+      .eyebrow {
+        margin-top: 28px;
+      }
 
-        .logo-container img {
-            height: auto;
-            max-width: 100%;
-            max-height: 160px;
-            display: block;
-            object-fit: contain;
-        }
+      h1 {
+        font-size: clamp(44px, 15vw, 58px);
+      }
 
-        @media (max-width: 640px) {
-            .content-box {
-                padding: 40px 25px;
-                border-radius: 12px;
-            }
+      .intro {
+        margin-top: 16px;
+        padding: 0 8px;
+        font-size: 13px;
+      }
 
-            .logo-container {
-                margin-bottom: 30px;
-            }
+      .form-card {
+        border-radius: 24px;
+      }
 
-            .logo-container img {
-                height: 100px;
-            }
-        }
-    </style>
+      .selection-options {
+        grid-template-columns: 1fr;
+      }
+
+      .selection-options .choice span {
+        min-height: 44px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .form-card {
+        padding: 22px 18px;
+      }
+
+      .topping-options {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
-<body class="bg-white">
-    <!-- Main Section -->
-    <section class="striped-bg py-16 px-4 sm-py-24 sm-px-0">
-        <div class="content-box">
-            <!-- Logo -->
-            <div class="logo-container">
-                <picture>
-                  <source srcset="logo.webp" type="image/webp" />
-                  <img src="logo.png" alt="Heli" width="120" height="59" decoding="async" />
-                </picture>
-            </div>
+<body>
+  <div class="stripe-band" aria-hidden="true"></div>
+  <main class="page-shell">
+    <header class="brand">
+      <picture>
+        <source srcset="logo.webp" type="image/webp" />
+        <img src="logo.png" alt="Heli" width="142" height="70" />
+      </picture>
+      <span class="brand-line">Greek · Frozen · Yogurt</span>
+      <p class="eyebrow">Gio Midtown</p>
+      <h1>Help shape what comes next.</h1>
+      <p class="intro">Tell us about your froyo and the toppings you would love to see. It takes less than a minute.</p>
+    </header>
 
-            <!-- Content -->
-            <div class="text-center">
-                <h1 class="hero-heading mb-6">
-                    One free froyo cup for Residents' Day
-                </h1>
+    <section class="form-card" aria-label="Heli feedback form">
+      <form id="heliFeedbackForm">
+        <fieldset>
+          <legend>How was your Heli experience? *</legend>
+          <div class="rating-options">
+            <label class="choice"><input type="radio" name="rating" value="1" required /><span>1</span></label>
+            <label class="choice"><input type="radio" name="rating" value="2" /><span>2</span></label>
+            <label class="choice"><input type="radio" name="rating" value="3" /><span>3</span></label>
+            <label class="choice"><input type="radio" name="rating" value="4" /><span>4</span></label>
+            <label class="choice"><input type="radio" name="rating" value="5" /><span>5</span></label>
+          </div>
+          <div class="rating-guide"><span>Not great</span><span>Loved it</span></div>
+        </fieldset>
 
-                <p class="subheading mb-6">
-                    A little cold, a little sweet — happy Residents' Day!
-                </p>
+        <fieldset>
+          <legend>What did you try today? <span class="optional">(select all that apply)</span></legend>
+          <div class="topping-options">
+            <label class="choice"><input type="checkbox" name="tried" value="Granola" /><span>Granola</span></label>
+            <label class="choice"><input type="checkbox" name="tried" value="Pistachio" /><span>Pistachio</span></label>
+            <label class="choice"><input type="checkbox" name="tried" value="Shredded coconut" /><span>Shredded coconut</span></label>
+            <label class="choice"><input type="checkbox" name="tried" value="Dark chocolate" /><span>Dark chocolate</span></label>
+            <label class="choice"><input type="checkbox" name="tried" value="Honey" /><span>Honey</span></label>
+            <label class="choice"><input type="checkbox" name="tried" value="Pistachio cream" /><span>Pistachio cream</span></label>
+          </div>
+        </fieldset>
 
-                <div id="claimButtonContainer">
-                    <button class="btn-primary mb-6" onclick="openClaimModal()" style="font-size: 18px; padding: 20px 40px;">
-                        Claim My Free Cup
-                    </button>
-                    <p style="font-size: 12px; color: #999; line-height: 1.5; margin-bottom: 30px;">
-                        Limited to one cup per apartment.
-                    </p>
-                </div>
+        <fieldset>
+          <legend>How do you feel about our current topping selection? *</legend>
+          <div class="selection-options">
+            <label class="choice"><input type="radio" name="selectionFeedback" value="Love it" required /><span>Love it</span></label>
+            <label class="choice"><input type="radio" name="selectionFeedback" value="Good, but I would like more variety" /><span>Good, but I would like more variety</span></label>
+            <label class="choice"><input type="radio" name="selectionFeedback" value="Needs improvement" /><span>Needs improvement</span></label>
+          </div>
+        </fieldset>
 
-                <div id="comingSoonContainer" style="display: none; margin-bottom: 30px;">
-                    <p style="font-size: 13px; color: #999; line-height: 1.6;">
-                        *Limited to one free cup per apartment.
-                    </p>
-                </div>
-
-                <div class="button-group">
-                    <button class="btn-secondary" onclick="window.open('https://instagram.com/helifroyo', '_blank')">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:3px"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.333.014 8.741 0 12 0zm0 0c-3.259 0-3.667.014-4.947.072C2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Follow @helifroyo
-                    </button>
-                    <button class="btn-secondary" onclick="openFeedbackModal()">
-                        💬 Send Feedback
-                    </button>
-                </div>
-            </div>
+        <div class="field">
+          <label class="field-label" for="toppingRequest">What topping or sauce should we add next? <span class="optional">(optional)</span></label>
+          <input type="text" id="toppingRequest" name="toppingRequest" maxlength="120" placeholder="Tell us your favorite" />
         </div>
+
+        <div class="field">
+          <label class="field-label" for="feedbackMessage">Anything else you would like us to know? <span class="optional">(optional)</span></label>
+          <textarea id="feedbackMessage" name="feedback" maxlength="1000" placeholder="What did you love? What could we improve?"></textarea>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="feedbackEmail">Email <span class="optional">(optional, only if you would like a reply)</span></label>
+          <input type="email" id="feedbackEmail" name="email" autocomplete="email" />
+        </div>
+
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;" />
+        <button type="submit" class="submit-button">Share feedback</button>
+        <p class="form-status" id="heliFeedbackStatus" role="status" aria-live="polite"></p>
+        <p class="form-note">Thank you for helping us make Heli better.</p>
+      </form>
+
+      <div class="success" id="heliFeedbackSuccess" hidden>
+        <div class="success-mark" aria-hidden="true">✓</div>
+        <h2>Thank you.</h2>
+        <p>Your feedback made it to the Heli team. We use every response to make the Gio selection better.</p>
+      </div>
     </section>
 
-    <!-- Claim Cup Modal -->
-    <div id="claimModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeClaimModal()">&times;</button>
-            <h2 class="modal-title">Free Froyo Cup On Us!</h2>
-            <p class="subheading" style="margin-bottom: 25px; font-size: 14px;">Enter your details below so we can send you your Residents' Day coupon code.</p>
-            <form id="claimForm" onsubmit="handleClaimSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Name *</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
+    <p class="support">Something wrong with the machine? Email <a href="mailto:hello@helifrozenyogurt.com">hello@helifrozenyogurt.com</a>.</p>
+  </main>
 
-                <div class="form-group">
-                    <label for="apartment">Apartment Number *</label>
-                    <input type="text" id="apartment" name="apartment" required>
-                </div>
+  <script>
+    (function () {
+      var HELI_FORM_API = 'https://heli-form-api.helifrozenyogurt.workers.dev';
+      var form = document.getElementById('heliFeedbackForm');
+      var statusElement = document.getElementById('heliFeedbackStatus');
 
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="consent" name="consent" required>
-                    <label for="consent">
-                        Yes, send me my coupon code and future Heli updates by email or text.
-                        <span style="display: block; font-style: italic; color: #999; font-size: 12px; margin-top: 5px;">You can opt out anytime. Your code will be valid for one free cup only.</span>
-                    </label>
-                </div>
-
-                <button type="submit" class="btn-primary">Get My Free Cup</button>
-
-                <p style="font-size: 12px; color: #999; line-height: 1.5; margin-top: 20px;">
-                    Limited to one free cup per apartment. Coupon codes will be sent on June 25th and will be valid for one week.
-                </p>
-            </form>
-        </div>
-    </div>
-
-    <!-- Feedback Modal -->
-    <div id="feedbackModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeFeedbackModal()">&times;</button>
-            <h2 class="modal-title">Help Us Get Better</h2>
-            <form id="feedbackForm" onsubmit="handleFeedbackSubmit(event)">
-                <div class="form-group">
-                    <label>How would you rate Heli? *</label>
-                    <div class="star-rating" id="starRating">
-                        <input type="radio" id="star5" name="rating" value="5" required>
-                        <label for="star5">★</label>
-                        <input type="radio" id="star4" name="rating" value="4">
-                        <label for="star4">★</label>
-                        <input type="radio" id="star3" name="rating" value="3">
-                        <label for="star3">★</label>
-                        <input type="radio" id="star2" name="rating" value="2">
-                        <label for="star2">★</label>
-                        <input type="radio" id="star1" name="rating" value="1">
-                        <label for="star1">★</label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="comment">Your Feedback</label>
-                    <textarea id="comment" name="comment" rows="4" placeholder="What did you love? What could we improve?"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="feedbackEmail">Email *</label>
-                    <input type="email" id="feedbackEmail" name="feedbackEmail" required>
-                </div>
-
-                <button type="submit" class="btn-primary">Send Feedback</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Thank You Popup - Claim -->
-    <div id="thankYouPopup" class="thank-you-popup">
-        <div class="thank-you-card">
-            <span class="thank-you-emoji">🎉</span>
-            <h2>You're on the list</h2>
-            <p>Your free Heli cup has been reserved.</p>
-            <p style="font-size: 14px; margin-top: 20px; line-height: 1.6;">
-                Check your email — your coupon code is on its way. Enter it at the Heli machine to enjoy your free Greek frozen yogurt.
-            </p>
-            <p style="font-size: 14px; margin-top: 15px;">
-                See you soon by the machine.
-            </p>
-            <p style="font-size: 12px; margin-top: 10px; opacity: 0.75;">
-                Don't see the email? Check your spam folder.
-            </p>
-            <div class="button-group" style="margin-top: 30px; gap: 10px;">
-                <button class="btn-secondary" style="background-color: rgba(255,255,255,0.2); color: white; border-color: white;" onclick="window.open('https://instagram.com/helifroyo', '_blank')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:3px"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.333.014 8.741 0 12 0zm0 0c-3.259 0-3.667.014-4.947.072C2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Follow @helifroyo
-                </button>
-                <button class="btn-secondary" style="background-color: rgba(255,255,255,0.2); color: white; border-color: white;" onclick="openFeedbackModal()">
-                    💬 Leave Feedback
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Thank You Popup - Feedback -->
-    <div id="feedbackThankYouPopup" class="thank-you-popup">
-        <div class="thank-you-card">
-            <span class="thank-you-emoji">❤️</span>
-            <h2>Thank You!</h2>
-            <p>Your feedback means everything to us.</p>
-            <p>It's how we bring you the best Greek frozen yogurt, every time.</p>
-        </div>
-    </div>
-
-    <script>
-        // Claims open June 25, 2026 and close after that day (month is 0-indexed)
-        const CLAIMS_OPEN_DATE  = new Date(2026, 5, 25); // June 25, 2026
-        const CLAIMS_CLOSE_DATE = new Date(2026, 5, 26); // June 26, 2026
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-
-        const isClaimsOpen = today >= CLAIMS_OPEN_DATE && today < CLAIMS_CLOSE_DATE;
-
-        // Show/hide appropriate content based on date
-        if (isClaimsOpen) {
-            document.getElementById('claimButtonContainer').style.display = 'block';
-            document.getElementById('comingSoonContainer').style.display = 'none';
-        } else {
-            document.getElementById('claimButtonContainer').style.display = 'none';
-            document.getElementById('comingSoonContainer').style.display = 'block';
-        }
-
-        // Google Forms - Claims Form
-        const CLAIM_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScuJeNz5xwPDkWX9hBqFyPaBV0wCf5IxqwB7SBuXdMpHwwGRg/formResponse';
-
-        // Google Forms - Feedback Form
-        const FEEDBACK_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfdZE4dZcW2EuP_e2PwzAIAOdNU1X1fu0-jY1BZ8DWP_BuUoQ/formResponse';
-
-        // Modal Functions
-        function openClaimModal() {
-            document.getElementById('claimModal').classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeClaimModal() {
-            document.getElementById('claimModal').classList.remove('show');
-            document.body.style.overflow = 'auto';
-            document.getElementById('claimForm').reset();
-        }
-
-        function openFeedbackModal() {
-            document.getElementById('feedbackModal').classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeFeedbackModal() {
-            document.getElementById('feedbackModal').classList.remove('show');
-            document.body.style.overflow = 'auto';
-            document.getElementById('feedbackForm').reset();
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            let claimModal = document.getElementById('claimModal');
-            let feedbackModal = document.getElementById('feedbackModal');
-
-            if (event.target == claimModal) {
-                closeClaimModal();
+      function submitHeliForm(payload) {
+        return fetch(HELI_FORM_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(function (response) {
+          return response.json().catch(function () { return {}; }).then(function (body) {
+            if (!response.ok || !body.success) {
+              throw new Error(body.error || 'Submission failed');
             }
-            if (event.target == feedbackModal) {
-                closeFeedbackModal();
-            }
-        }
-
-        // Form Submissions
-        function handleClaimSubmit(event) {
-            event.preventDefault();
-
-            const formData = new FormData(document.getElementById('claimForm'));
-            const name      = formData.get('name');
-            const email     = formData.get('email');
-            const apartment = formData.get('apartment');
-            const phone     = formData.get('phone') || '';
-            const consent   = formData.get('consent') ? 'Yes' : 'No';
-
-            // 1. Save to Google Sheets via Google Forms
-            fetch(CLAIM_FORM_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({
-                    'entry.876818892': name,
-                    'entry.1240160696': apartment,
-                    'entry.2127206558': email,
-                    'entry.385193803': phone,
-                    'entry.2032772615': consent
-                })
-            });
-
-            // 2. Show thank-you popup immediately
-            showThankYouPopup('thankYouPopup', 'claimModal');
-        }
-
-        function handleFeedbackSubmit(event) {
-            event.preventDefault();
-
-            const formData = new FormData(document.getElementById('feedbackForm'));
-            const data = {
-                'entry.1386650122': formData.get('rating'),
-                'entry.588368669': formData.get('comment') || '',
-                'entry.1476033335': formData.get('feedbackEmail')
-            };
-
-            console.log('Submitting feedback:', data);
-            console.log('Form URL:', FEEDBACK_FORM_URL);
-
-            fetch(FEEDBACK_FORM_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams(data)
-            }).then(response => {
-                console.log('Feedback submission successful');
-                showThankYouPopup('feedbackThankYouPopup', 'feedbackModal');
-            }).catch(error => {
-                console.log('Feedback submission error:', error);
-                console.log('Data:', data);
-                showThankYouPopup('feedbackThankYouPopup', 'feedbackModal');
-            });
-        }
-
-        function showThankYouPopup(popupId, modalToClose) {
-            // Close the form modal
-            document.getElementById(modalToClose).classList.remove('show');
-            document.body.style.overflow = 'auto';
-
-            // Show thank you popup
-            const popup = document.getElementById(popupId);
-            popup.classList.add('show');
-
-            // Auto-hide after 8 seconds
-            setTimeout(() => {
-                popup.classList.remove('show');
-
-                // Reset forms
-                if (modalToClose === 'claimModal') {
-                    document.getElementById('claimForm').reset();
-                } else {
-                    document.getElementById('feedbackForm').reset();
-                }
-            }, 8000);
-        }
-
-        // Star rating interaction
-        const starLabels = document.querySelectorAll('#starRating label');
-        starLabels.forEach(label => {
-            label.addEventListener('click', function() {
-                // Visual feedback
-            });
+            return body;
+          });
         });
-    </script>
+      }
+
+      function selectedValues(formData, name) {
+        return formData.getAll(name).filter(Boolean);
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        var button = form.querySelector('button[type="submit"]');
+        var originalButtonText = button.textContent;
+        var formData = new FormData(form);
+        var tried = selectedValues(formData, 'tried');
+        var comments = [];
+
+        comments.push('Topping selection: ' + (formData.get('selectionFeedback') || 'Not answered'));
+        comments.push('Toppings and sauces tried: ' + (tried.length ? tried.join(', ') : 'Not specified'));
+
+        if (formData.get('toppingRequest')) {
+          comments.push('Requested next: ' + formData.get('toppingRequest'));
+        }
+        if (formData.get('feedback')) {
+          comments.push('Additional feedback: ' + formData.get('feedback'));
+        }
+
+        button.disabled = true;
+        button.textContent = 'Sending...';
+        statusElement.className = 'form-status';
+        statusElement.textContent = '';
+
+        submitHeliForm({
+          type: 'Customer feedback',
+          location: 'Gio Midtown',
+          rating: formData.get('rating') || '',
+          feedback: comments.join('\n'),
+          email: formData.get('email') || '',
+          website: formData.get('website') || ''
+        })
+        .then(function () {
+          form.reset();
+          form.hidden = true;
+          document.getElementById('heliFeedbackSuccess').hidden = false;
+        })
+        .catch(function (error) {
+          statusElement.className = 'form-status error';
+          statusElement.textContent = error.message || 'Something went wrong. Please try again.';
+        })
+        .finally(function () {
+          button.disabled = false;
+          button.textContent = originalButtonText;
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
