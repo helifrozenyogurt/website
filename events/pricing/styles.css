@@ -570,11 +570,14 @@
   }
 
   .pricing-hero-media {
-    min-height: 620px;
+    width: min(100%, 620px);
+    min-height: 0;
+    margin-inline: auto;
   }
 
   .pricing-hero-media img {
-    height: 584px;
+    height: auto;
+    aspect-ratio: 4 / 5;
   }
 
   .package-grid {
@@ -592,13 +595,14 @@
   }
 
   .pricing-hero-media {
-    min-height: 500px;
+    width: min(100%, 560px);
+    min-height: 0;
     padding: 14px;
     border-radius: 30px;
   }
 
   .pricing-hero-media img {
-    height: 472px;
+    height: auto;
     border-radius: 20px;
   }
 
@@ -660,11 +664,7 @@
 
 @media (max-width: 390px) {
   .pricing-hero-media {
-    min-height: 455px;
-  }
-
-  .pricing-hero-media img {
-    height: 427px;
+    min-height: 0;
   }
 
   .price-formula-card {

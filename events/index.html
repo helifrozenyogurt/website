@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="assets/heli-mobile-cart.webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/heli-mobile-cart.webp" imagesrcset="assets/heli-mobile-cart-800.webp 800w, assets/heli-mobile-cart.webp 1200w" imagesizes="(max-width: 720px) calc(100vw - 52px), (max-width: 980px) 584px, 540px" fetchpriority="high" />
   <link rel="stylesheet" href="styles.css" />
 
   <script type="application/ld+json">
@@ -140,16 +140,15 @@
 
         <figure class="hero-media" data-reveal>
           <picture class="cart-picture">
-            <source srcset="assets/heli-mobile-cart.webp" type="image/webp" />
+            <source srcset="assets/heli-mobile-cart-800.webp 800w, assets/heli-mobile-cart.webp 1200w" sizes="(max-width: 720px) calc(100vw - 52px), (max-width: 980px) 584px, 540px" type="image/webp" />
             <img
               id="heroCartImage"
               src="assets/heli-mobile-cart.jpg"
-              alt="Heli Greek frozen yogurt mobile cart styled with an umbrella, toppings, cups, flowers, and event signage"
+              alt="Heli event cart with a blue-and-white striped umbrella, fluted white front, flowers, cups, toppings, and sauces"
               width="1200"
               height="1500"
               fetchpriority="high"
               decoding="async"
-              
             />
           </picture>
           <figcaption class="hero-media-label">A refined cart setup designed to feel intentional inside the event, not added on as an afterthought.</figcaption>
@@ -195,6 +194,30 @@
             <h3>Easy for the host</h3>
             <p>We coordinate setup, service flow, supplies, and breakdown details so the experience feels organized from arrival to finish.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-feature" aria-labelledby="detail-feature-title">
+      <div class="page-shell detail-feature-card">
+        <figure class="detail-feature-media" data-reveal>
+          <picture>
+            <source srcset="assets/heli-cart-detail-800.webp 800w, assets/heli-cart-detail.webp 1200w" sizes="(max-width: 720px) calc(100vw - 52px), (max-width: 980px) 560px, 52vw" type="image/webp" />
+            <img
+              src="assets/heli-cart-detail.jpg"
+              alt="Close view of the Heli cart showing its striped umbrella, floral arrangement, branded menu, cups, topping bar, and logo"
+              width="1200"
+              height="1500"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        </figure>
+
+        <div class="detail-feature-copy" data-reveal>
+          <p class="section-kicker">Designed in the Details</p>
+          <h2 id="detail-feature-title">A cart that belongs at the event.</h2>
+          <p>From the striped umbrella and branded service pieces to the curated topping bar, every element is styled as one cohesive setup.</p>
         </div>
       </div>
     </section>
