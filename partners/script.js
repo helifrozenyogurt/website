@@ -45,7 +45,7 @@
           if (statusEl) { statusEl.className = 'form-status'; statusEl.textContent = ''; }
           var leadData = new FormData(form);
           submitHeliForm({
-            type: 'Property inquiry',
+            type: 'Venue inquiry',
             location: leadData.get('propertyName') || '',
             propertyType: leadData.get('propertyType') || '',
             addressCity: leadData.get('addressCity') || '',
