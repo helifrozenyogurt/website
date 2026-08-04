@@ -1,0 +1,301 @@
+/* Final responsive safeguards for the Heli home page. */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+main,
+section,
+.page-shell,
+.section-card,
+.hero-grid,
+.section-heading,
+.cards-grid,
+.steps-grid,
+.places-grid,
+.events-promo-card,
+.cta-card,
+.visual-grid,
+.icon-steps,
+.place-band,
+.showcase-band,
+.feedback-card,
+.form-grid-3,
+.specs-grid {
+  min-width: 0;
+}
+
+.hero-grid > *,
+.section-heading > *,
+.cards-grid > *,
+.steps-grid > *,
+.places-grid > *,
+.events-promo-card > *,
+.cta-card > *,
+.visual-grid > *,
+.icon-steps > *,
+.place-band > *,
+.showcase-band > *,
+.feedback-card > *,
+.form-grid-3 > *,
+.specs-grid > * {
+  min-width: 0;
+}
+
+img,
+video,
+svg,
+iframe,
+canvas,
+input,
+select,
+textarea,
+button {
+  max-width: 100%;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+p,
+li,
+a,
+span,
+label,
+summary {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 980px) {
+  .specs-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .feedback-card,
+  .place-band,
+  .showcase-band {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .page-shell {
+    width: calc(100% - 24px) !important;
+    max-width: 100%;
+  }
+
+  .nav-wrap {
+    top: 8px;
+    padding-top: 8px;
+  }
+
+  .nav {
+    gap: 8px;
+    padding: 9px 9px 9px 12px;
+    border-radius: 24px;
+  }
+
+  .nav-actions {
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .nav .button {
+    max-width: 92px;
+    padding-inline: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #siteHeader.nav-open .nav-links {
+    width: calc(100% - 24px);
+  }
+
+  .hero-grid,
+  .section-heading,
+  .cards-grid,
+  .steps-grid,
+  .steps-grid--guest,
+  .places-grid,
+  .events-promo-card,
+  .cta-card,
+  .visual-grid,
+  .icon-steps,
+  .place-band,
+  .showcase-band,
+  .feedback-card,
+  .form-grid-3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .specs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .section-card,
+  .events-promo-card,
+  .cta-card,
+  .feedback-card {
+    padding: 24px 18px !important;
+    border-radius: 26px;
+  }
+
+  .hero {
+    padding-top: 42px;
+  }
+
+  .experience-card {
+    width: 100%;
+    min-height: 410px !important;
+  }
+
+  .machine-photo-wrap {
+    inset: 72px 8px 12px;
+  }
+
+  .trust-bar {
+    padding: 14px 16px;
+    border-radius: 24px;
+    line-height: 1.5;
+  }
+
+  .visual-card,
+  .events-promo-media,
+  .place-photo,
+  .showcase-media,
+  .feedback-form,
+  .inquiry-card,
+  .dim-standalone {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .button,
+  .eyebrow,
+  .proof-chip,
+  .spec-tag,
+  .secondary-fit {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .eyebrow {
+    align-items: flex-start;
+    border-radius: 18px;
+  }
+
+  .hero-actions,
+  .hero-proof,
+  .specs-tags,
+  .secondary-fits {
+    width: 100%;
+  }
+
+  .faq-question {
+    align-items: flex-start;
+    padding: 17px 16px;
+  }
+
+  .faq-answer {
+    padding: 0 16px 18px;
+  }
+
+  .rating-options {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .dim-v-label {
+    left: 8px;
+    transform: translate(0, -50%);
+  }
+
+  .footer-brand {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+
+  .footer-tagline {
+    white-space: normal;
+  }
+
+  .footer-email {
+    overflow-wrap: anywhere;
+  }
+
+  .placement-note,
+  .mid-cta {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .page-shell {
+    width: calc(100% - 16px) !important;
+  }
+
+  .nav {
+    padding: 8px;
+  }
+
+  .brand-logo {
+    width: 70px;
+  }
+
+  .nav .button {
+    max-width: 78px;
+    min-height: 40px;
+    padding-inline: 9px;
+    font-size: 9px;
+  }
+
+  .section-card,
+  .events-promo-card,
+  .cta-card,
+  .feedback-card {
+    padding: 21px 14px !important;
+  }
+
+  .feature-card,
+  .step-card,
+  .place-card,
+  .visual-card,
+  .inquiry-card,
+  .feedback-form {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .experience-card {
+    min-height: 380px !important;
+    padding: 16px;
+  }
+
+  .rating-options {
+    gap: 4px;
+  }
+
+  .rating-option span {
+    min-height: 40px;
+    font-size: 15px;
+  }
+
+  .spec-item {
+    padding: 18px 10px;
+  }
+
+  .spec-value {
+    font-size: 32px;
+  }
+}
