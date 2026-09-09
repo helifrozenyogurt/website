@@ -261,6 +261,30 @@
 
     .link:hover .arrow { transform: translate(2px, -2px); }
 
+    .contact {
+      margin-top: 24px;
+      color: var(--slate);
+      font-size: 13px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .contact p { margin: 0; }
+    .contact strong { color: var(--navy-deep); }
+
+    .contact a {
+      color: var(--navy);
+      font-weight: 600;
+      overflow-wrap: anywhere;
+      text-underline-offset: 3px;
+    }
+
+    .contact a:focus-visible {
+      outline: 2px solid var(--navy);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
     footer {
       display: flex;
       align-items: center;
@@ -395,6 +419,12 @@
           </svg>
         </a>
       </nav>
+
+      <section class="contact" aria-label="Contact Heli">
+        <p><strong>Need help? Have a question?</strong><br />
+          Shoot us a message at <a href="mailto:hello@helifrozenyogurt.com">hello@helifrozenyogurt.com</a>
+        </p>
+      </section>
 
       <footer>
         <span class="footer-dot" aria-hidden="true"></span>
