@@ -12,6 +12,15 @@
       navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     });
 
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && header.classList.contains('nav-open')) {
+        header.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Open menu');
+        navToggle.focus();
+      }
+    });
+
     if (navLinks) {
       navLinks.addEventListener('click', function (event) {
         if (event.target && event.target.tagName === 'A') {
@@ -22,6 +31,14 @@
       });
     }
   }
+
+
+  document.querySelectorAll('[data-event-choice]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var eventType = document.getElementById('eventType');
+      if (eventType) eventType.value = link.getAttribute('data-event-choice');
+    });
+  });
 
   var cartImage = document.getElementById('heroCartImage');
   if (cartImage) {
@@ -65,7 +82,7 @@
       var button = form.querySelector('button[type="submit"]');
       var originalText = button ? button.textContent : '';
       var formData = new FormData(form);
-      var eventDate = formData.get('eventDate') || '';
+      var eventDate = formData.get('eventDate') || 'Date to be confirmed';
       var guestCount = formData.get('guestCount') || '';
       var eventDetails = formData.get('eventDetails') || '';
       var eventType = formData.get('eventType') || '';
@@ -109,6 +126,7 @@
         var success = document.getElementById('heliEventSuccess');
         if (success) {
           success.hidden = false;
+          success.focus({ preventScroll: true });
           success.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }).catch(function () {
