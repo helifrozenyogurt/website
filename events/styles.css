@@ -455,6 +455,7 @@ h2 em {
 
 .story-photo img {
   width: 100%;
+  height: auto;
   object-fit: cover;
 }
 
@@ -583,6 +584,7 @@ h2 em {
 
 .included-photo img {
   width: 100%;
+  height: auto;
   max-height: 790px;
   aspect-ratio: 3 / 4;
   object-fit: cover;
@@ -1144,7 +1146,7 @@ footer {
   h1 { max-width: 700px; font-size: clamp(69px, 15.4vw, 110px); }
   .hero-copy { max-width: 620px; }
   .hero-photo { width: min(85%, 560px); margin: 0 auto; }
-  .hero-photo img { height: auto; min-height: 0; aspect-ratio: 3 / 4; }
+  .hero-photo img { height: auto; min-height: 0; aspect-ratio: 4 / 5; object-position: center 60%; }
   .hero-photo figcaption { right: -28px; }
   .intro-grid {
     grid-template-columns: 45px 1fr;
@@ -1194,6 +1196,10 @@ footer {
   .hero-actions .text-link { align-self: flex-start; }
   .hero-photo { width: calc(100% - 18px); padding: 8px; }
   .hero-photo figcaption { right: -9px; bottom: 24px; font-size: 16px; }
+  /* Shorter, subject-aware crops for the stacked phone layout. */
+  .story-photo-toppings img { aspect-ratio: 1; object-position: center 65%; }
+  .story-photo-service img { aspect-ratio: 4 / 5; object-position: center 55%; }
+  .included-photo img { aspect-ratio: 1; object-position: center 68%; }
   .marquee-track { gap: 17px; }
   .intro-section { padding-top: 78px; }
   .intro-grid { grid-template-columns: 1fr; gap: 18px; }
@@ -1216,7 +1222,7 @@ footer {
   .occasion-list article { grid-template-columns: 38px 1fr; padding: 24px 0 26px; }
   .occasion-list h3 { font-size: clamp(40px, 13vw, 54px); }
   .included-photo { width: calc(100% - 18px); }
-  .photo-stamp { right: -15px; bottom: 28px; width: 108px; height: 108px; font-size: 19px; }
+  .photo-stamp { right: -9px; bottom: 20px; width: 88px; height: 88px; font-size: 16px; }
   .included-copy li { grid-template-columns: 34px 1fr; font-size: 13px; }
   .process-heading { margin-bottom: 42px; }
   .process-list { grid-template-columns: 1fr; }
