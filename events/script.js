@@ -3,7 +3,6 @@
 
   var header = document.getElementById('siteHeader');
   var navToggle = document.getElementById('navToggle');
-  var navLinks = document.getElementById('navLinks');
 
   if (header && navToggle) {
     navToggle.addEventListener('click', function () {
@@ -21,15 +20,13 @@
       }
     });
 
-    if (navLinks) {
-      navLinks.addEventListener('click', function (event) {
-        if (event.target && event.target.tagName === 'A') {
-          header.classList.remove('nav-open');
-          navToggle.setAttribute('aria-expanded', 'false');
-          navToggle.setAttribute('aria-label', 'Open menu');
-        }
-      });
-    }
+    header.addEventListener('click', function (event) {
+      if (event.target && event.target.closest && event.target.closest('a')) {
+        header.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Open menu');
+      }
+    });
   }
 
 

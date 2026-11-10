@@ -29,7 +29,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-body,
 button,
 input,
 select,
@@ -1302,3 +1301,11 @@ section[id] { scroll-margin-top: 100px; }
 @media (max-width:1040px) and (min-width:821px) { .nav-links { gap:13px; font-size:9px; } .nav-cta { padding-inline:16px; } }
 @media (max-width:820px) { .process-list { grid-template-columns:1fr; } .process-list li,.process-list li:nth-child(3) { min-height:190px; padding:24px 0; border-right:0; border-bottom:1px solid var(--line); } .process-list li:nth-child(2) { border-right:0; border-bottom:1px solid var(--line); } .process-list li:last-child { border-bottom:0; } }
 @media (max-width:560px) { .hero-planning-note { margin-top:22px; } .occasion-list h3 { font-size:42px; } .occasion-list article { padding-block:28px; } .nav-cta { padding-inline:11px; font-size:8px; } .hero-photo figcaption { right:0; } }
+
+/* Keep mobile form text legible and avoid focus zoom in iOS Safari. */
+@media (max-width: 560px) {
+  .lead-form input,
+  .lead-form select,
+  .lead-form textarea { font-size: 16px; }
+  .nav-toggle { flex-shrink: 0; }
+}
